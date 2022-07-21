@@ -5,9 +5,6 @@ import UserAccount from "./UserAccount"
 
 function App() {
 
-  let somefunc = () => {
-
-  }
 
   return (
     <>
