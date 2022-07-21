@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import UserHome from "./UserHome"
 import UserAccount from "./UserAccount"
 
