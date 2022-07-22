@@ -13,7 +13,8 @@ function App() {
 
   return (
     <>
-      <UserNavBar/>
+    {user.admin? <UserNavBar/> : <adminNav/> }
+      
         <BrowserRouter>
             <Switch>
 
