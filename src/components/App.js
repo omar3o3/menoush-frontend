@@ -4,23 +4,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import UserHome from "./UserHome"
 import UserAccount from "./UserAccount"
+import UserNavBar from "./UserNavBar"
+import GalleryComp from "./GalleryComp"
+import UserCart from "./UserCart"
 
 function App() {
 
 
   return (
     <>
-      <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              <UserHome/>
-            </Route>
+      <UserNavBar/>
+        <BrowserRouter>
+            <Switch>
 
-            <Route path="/user-account">
-              <UserAccount/>
-            </Route>
-        </Switch>
-      </BrowserRouter>
+              <Route exact path="/">
+                <UserHome/>
+              </Route>
+
+              <Route exact path="/gallery">
+                <GalleryComp />
+              </Route>
+
+              <Route exact path="/cart">
+                <UserCart />
+              </Route>
+
+              <Route exact path="/user-account">
+                <UserAccount/>
+              </Route>
+
+          </Switch>
+        </BrowserRouter>
     </>
   );
 }
