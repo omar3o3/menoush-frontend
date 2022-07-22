@@ -13,8 +13,6 @@ function CardForHomeComp({desserts}) {
       <Col lg={true} key={dessert.id}>
         <Card style={{ width: '18rem' }}>
              <Card.Img variant="top" src= {dessert.image_url} />
-             <Card.Body>
-             </Card.Body>
                  <ListGroup className="list-group-flush">
                      <ListGroup.Item>{dessert.english_name}</ListGroup.Item>
                      <ListGroup.Item>{dessert.arabic_name}</ListGroup.Item>
