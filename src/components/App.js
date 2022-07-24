@@ -13,29 +13,27 @@ function App() {
 
   return (
     <>
-    {user.admin? <UserNavBar/> : <adminNav/> }
-      
-        <BrowserRouter>
-            <Switch>
+      {/* {user.admin? <UserNavBar/> : <adminNav/> } */}
+      <UserNavBar />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <UserHome />
+          </Route>
 
-              <Route exact path="/">
-                <UserHome/>
-              </Route>
+          <Route exact path="/gallery">
+            <GalleryComp />
+          </Route>
 
-              <Route exact path="/gallery">
-                <GalleryComp />
-              </Route>
+          <Route exact path="/cart">
+            <UserCart />
+          </Route>
 
-              <Route exact path="/cart">
-                <UserCart />
-              </Route>
-
-              <Route exact path="/user-account">
-                <UserAccount/>
-              </Route>
-
-          </Switch>
-        </BrowserRouter>
+          <Route exact path="/user-account">
+            <UserAccount />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }
