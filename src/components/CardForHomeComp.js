@@ -16,7 +16,7 @@ function CardForHomeComp({
   desserts,
 }) {
   // console.log(cookies)
-  console.log(desserts)
+  // console.log(desserts)
   // console.log(desserts.image)
   // console.log(qatayefs)
 

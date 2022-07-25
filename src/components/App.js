@@ -2,23 +2,47 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import LoginComp from "./LoginComp";
+
 import UserHome from "./UserHome"
 import UserAccount from "./UserAccount"
 import UserNavBar from "./UserNavBar"
 import GalleryComp from "./GalleryComp"
 import UserCart from "./UserCart"
 
+
+import AdminNavBar from "./AdminNavBar"
+import SubmitDessertForm from "./SubmitDessertForm";
+
 function App() {
 
+  const [user , setUser] = useState(null)
+
+    useEffect(() => {
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
+    },[]);
+
+  if (!user) return <LoginComp onLogin={setUser} />;
 
   return (
     <>
-      {/* {user.admin? <UserNavBar/> : <adminNav/> } */}
-      <UserNavBar />
+      {user && user.admin ? (
+        <AdminNavBar user={user} setUser={setUser} />
+      ) : (
+        <UserNavBar user={user} setUser={setUser} />
+      )}
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <UserHome />
+          </Route>
+
+          <Route exact path="/login">
+            <LoginComp />
           </Route>
 
           <Route exact path="/gallery">
@@ -31,6 +55,10 @@ function App() {
 
           <Route exact path="/user-account">
             <UserAccount />
+          </Route>
+
+          <Route exact path="/create">
+            <SubmitDessertForm />
           </Route>
         </Switch>
       </BrowserRouter>
