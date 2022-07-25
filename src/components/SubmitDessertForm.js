@@ -19,11 +19,20 @@ function SubmitDessertForm() {
 
   let handleSubmit = (e) =>{
     e.preventDefault()
-    // console.log(englishName);
-    // console.log(arabicName);
-    // console.log(price);
-    // console.log(dessertType);
-    console.log(images);
+    fetch("/create-dessert", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({
+        english_name: englishName,
+        arabic_name: arabicName,
+        price: price,
+        dessert_type: dessertType
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
   }
 
   return (
