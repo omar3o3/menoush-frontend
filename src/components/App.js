@@ -12,7 +12,7 @@ import UserCart from "./UserCart"
 
 
 import AdminNavBar from "./AdminNavBar"
-import SubmitDessertForm from "./SubmitDessertForm";
+import CreateSection from "./CreateSection";
 
 function App() {
 
@@ -26,7 +26,10 @@ function App() {
       });
     },[]);
 
+    // console.log(user)
+
   if (!user) return <LoginComp onLogin={setUser} />;
+  // if (!user) return <h1>hi</h1>
 
   return (
     <>
@@ -58,7 +61,7 @@ function App() {
           </Route>
 
           <Route exact path="/create">
-            <SubmitDessertForm />
+            <CreateSection />
           </Route>
         </Switch>
       </BrowserRouter>
