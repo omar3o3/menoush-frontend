@@ -1,14 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function SubmitPhotos() {
+  const [desserts, setDesserts] = useState([]);
+
   useEffect(() => {
     fetch("/desserts")
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
+      .then((data) => setDesserts(data));
   }, []);
+
+  console.log(desserts);
+  // desserts.map(dessert => console.log(dessert.images_url))
 
   let handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +27,16 @@ function SubmitPhotos() {
     let eachImage = e.target.images.files;
 
     for (var x = 0; x < imagesLength; x++) {
-      formData.append("images", eachImage[x]);
+      formData.append("images[]", eachImage[x]);
     }
+
+    // for (let blah in formData.entries()) {
+    //   console.log(blah);
+    // }
+
+    // for (var pair of formData.values()) {
+    //   console.log(pair);
+    // }
 
     submitToApi(formData);
   };
