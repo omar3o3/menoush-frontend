@@ -2,7 +2,8 @@ import React from 'react'
 
 import SubmitDessertForm from './SubmitDessertForm'
 import SubmitPhotos from './SubmitPhotos'
-import SubmitPhotosTwo from './SubmitPhotosTwo';
+import SubmitPreviewImage from './SubmitPreviewImage'
+// import SubmitPhotosTwo from './SubmitPhotosTwo';
 
 function CreateSection() {
   return (
@@ -10,8 +11,8 @@ function CreateSection() {
       <SubmitDessertForm />
       <br />
       <SubmitPhotos />
-      {/* <SubmitPhotosTwo/> */}
       <br />
+      <SubmitPreviewImage/>
       <br />
     </div>
   );

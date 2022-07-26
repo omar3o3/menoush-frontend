@@ -3,33 +3,23 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function SubmitPhotos() {
-  const [desserts, setDesserts] = useState([]);
-
-  useEffect(() => {
-    fetch("/desserts")
-      .then((resp) => resp.json())
-      .then((data) => setDesserts(data));
-  }, []);
-
-  console.log(desserts);
-  // desserts.map(dessert => console.log(dessert.images_url))
-
+function SubmitPreviewImage() {
   let handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
 
-    const englishValue = document.getElementById("english_name").value;
+    const englishValue2 = document.getElementById("english_name2").value;
 
-    formData.append("[english_name]", englishValue);
-    // console.log(englishValue);
+    // console.log(document.getElementById("english_name2").value);
+    // console.log(englishValue2)
 
-    let imagesLength = e.target.images.files.length;
-    let eachImage = e.target.images.files;
+    formData.append("[english_name]", englishValue2);
 
-    for (var x = 0; x < imagesLength; x++) {
-      formData.append("images[]", eachImage[x]);
-    }
+    // let imagesLength = e.target.images.files.length;
+    let eachImage = e.target.preview_image.files[0];
+    // console.log(e.target.preview_image.files[0]);
+
+    formData.append("[preview_image]", eachImage);
 
     // for (let blah in formData.entries()) {
     //   console.log(blah);
@@ -43,7 +33,7 @@ function SubmitPhotos() {
   };
 
   let submitToApi = (data) => {
-    fetch("/add-images", {
+    fetch("/add-preview-image", {
       method: "POST",
       body: data,
     })
@@ -54,11 +44,11 @@ function SubmitPhotos() {
   return (
     <div>
       <Form className="m-3 mb-6" onSubmit={handleSubmit}>
-        <h1 className="text-center">Submit Dessert Photos</h1>
+        <h1 className="text-center">Submit Dessert Preview Photo</h1>
 
         <Form.Group className="my-3">
           <Form.Label>English Name</Form.Label>
-          <Form.Control type="text" name="english_name" id="english_name" />
+          <Form.Control type="text" name="english_name2" id="english_name2" />
         </Form.Group>
 
         <Form.Group className="my-3">
@@ -66,9 +56,9 @@ function SubmitPhotos() {
           <Form.Control
             type="file"
             accept="image/*"
-            multiple="multiple"
-            name="images"
-            id="images"
+            // multiple="multiple"
+            name="preview_image"
+            id="preview_image"
           />
         </Form.Group>
 
@@ -82,4 +72,4 @@ function SubmitPhotos() {
   );
 }
 
-export default SubmitPhotos;
+export default SubmitPreviewImage;
