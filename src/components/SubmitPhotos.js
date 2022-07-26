@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState, useEffect} from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -69,44 +69,3 @@ function SubmitPhotos() {
 }
 
 export default SubmitPhotos;
-
-//   const [images, setImages] = useState([]);
-//   const [englishName, setEnglishName] = useState("");
-// const [arabicName , setArabicName] = useState("")
-//   const [dessertId, setId] = useState(null);
-
-// let formData = new FormData();
-// formData.append("id", dessertId);
-// formData.append("images", images);
-// formData.append("id", 2)
-
-// let imagesLength = images.length;
-// for (var x = 0; x < imagesLength; x++) {
-//   formData.append("images", images[x]);
-// }
-
-// for (const value of formData.values()) {
-//   console.log(value);
-// }
-
-// for (const value of formData.entries()) {
-//   console.log(value);
-// }
-
-// console.log(images)
-// console.log(images[0]);
-
-// fetch("/add-images", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "multipart/form-data",
-//     // "Content-Type": "application/json",
-//   },
-// //   body: JSON.stringify({
-// //     id: dessertId,
-// //     images: images
-// //   }),
-//     body: formData,
-// })
-//   .then((resp) => resp.json())
-//   .then((data) => console.log(data));
