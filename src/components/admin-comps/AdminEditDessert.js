@@ -19,6 +19,8 @@ function AdminEditDessert() {
       .then((data) => setDesserts(data));
   }, []);
 
+  console.log(desserts)
+
   return (
     <div>
       {desserts.map((dessert) => (
