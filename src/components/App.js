@@ -4,15 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import LoginComp from "./LoginComp";
 
-import UserHome from "./UserHome"
-import UserAccount from "./UserAccount"
-import UserNavBar from "./UserNavBar"
-import GalleryComp from "./GalleryComp"
-import UserCart from "./UserCart"
+import UserHome from "./user-comps/UserHome"
+import UserAccount from "./user-comps/UserAccount"
+import UserNavBar from "./user-comps/UserNavBar"
+import GalleryComp from "./user-comps/GalleryComp"
+import UserCart from "./user-comps/UserCart"
 
 
-import AdminNavBar from "./AdminNavBar"
-import CreateSection from "./CreateSection";
+import AdminNavBar from "./admin-comps/AdminNavBar"
+import CreateSection from "./admin-comps/CreateSection";
 
 function App() {
 
