@@ -7,9 +7,9 @@ function SubmitDessertForm() {
 
   const [englishName , setEnglishName] = useState("")
   const [arabicName , setArabicName] = useState("")
-  const [price , setPrice] = useState(null)
+  const [price , setPrice] = useState(0)
   const [dessertType , setDessertType] = useState("cookie")
-  const [images , setImages] = useState([])
+  // const [images , setImages] = useState([])
 
   // console.log(setEnglishName);
   // console.log(setArabicName);
@@ -33,6 +33,14 @@ function SubmitDessertForm() {
     })
     .then(resp => resp.json())
     .then(data => console.log(data))
+    .then(setEnglishName(""))
+    .then(setArabicName(""))
+    .then(setPrice(0))
+
+    // setEnglishName("")
+    // setArabicName("")
+    // setPrice(0)
+    // setDessertType("cookie")
   }
 
   return (
@@ -42,20 +50,19 @@ function SubmitDessertForm() {
       <Form.Group className="my-3" controlId="formBasicEnglish">
         <Form.Label>English Name</Form.Label>
         <Form.Control
-          type="englishName"
+          type="text"
+          value={englishName}
           placeholder="Enter the english name for the dessert"
           onChange={(e) => setEnglishName(e.target.value)}
         />
       </Form.Group>
 
-      <Form.Group
-        className="my-3"
-        controlId="formBasicArabic"
-      >
+      <Form.Group className="my-3" controlId="formBasicArabic">
         <Form.Label>Arabic Name</Form.Label>
         <Form.Control
-          type="arabicName"
+          type="text"
           placeholder="Enter the arabic name for the dessert"
+          value={arabicName}
           onChange={(e) => setArabicName(e.target.value)}
         />
       </Form.Group>
@@ -63,21 +70,22 @@ function SubmitDessertForm() {
       <Form.Group className="my-3" controlId="formBasicPrice">
         <Form.Label>Price</Form.Label>
         <Form.Control
-          type="price"
+          type="number"
           placeholder="Enter the price for the dessert"
+          value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
       </Form.Group>
 
       <Form.Group className="my-3">
         <Form.Label>Dessert Type</Form.Label>
-        <Form.Select onChange={(e) => setDessertType(e.target.value)}>
-          <option value="kunafa">Cookie</option>
-          <option value="qatayef">Qatayef</option>
-          <option value="platter">Platter</option>
-          <option value="kunafa">Kunafa</option>
-          <option value="cake">Cake</option>
-        </Form.Select>
+          <Form.Select onChange={(e) => setDessertType(e.target.value)}>
+            <option value="kunafa">Cookie</option>
+            <option value="qatayef">Qatayef</option>
+            <option value="platter">Platter</option>
+            <option value="kunafa">Kunafa</option>
+            <option value="cake">Cake</option>
+          </Form.Select>
       </Form.Group>
 
       {/* <Form.Group className="my-3" controlId="formBasicFiles" onChange={(e) => setImages(prev => [...prev , e.target.files])}>
