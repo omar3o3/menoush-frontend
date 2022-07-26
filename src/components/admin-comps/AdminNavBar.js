@@ -20,7 +20,7 @@ function AdminNavBar({user , setUser}) {
       <Container className="fs-3">
         <Nav className="me-auto">
           <Nav.Link href="/create">Create</Nav.Link>
-          <Nav.Link href="/gallery">Edit</Nav.Link>
+          <Nav.Link href="/edit-desserts">Edit</Nav.Link>
           <Nav.Link href="/cart">Pending-Orders</Nav.Link>
           <Nav.Link href="/cart">Accepted-Orders</Nav.Link>
           <Nav.Link href="/userProfile">*icon*</Nav.Link>

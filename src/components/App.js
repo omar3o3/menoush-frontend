@@ -13,6 +13,7 @@ import UserCart from "./user-comps/UserCart"
 
 import AdminNavBar from "./admin-comps/AdminNavBar"
 import CreateSection from "./admin-comps/CreateSection";
+import AdminEditDessert from "./admin-comps/AdminEditDessert";
 
 function App() {
 
@@ -62,6 +63,10 @@ function App() {
 
           <Route exact path="/create">
             <CreateSection />
+          </Route>
+
+          <Route exact path="/edit-desserts">
+            <AdminEditDessert />
           </Route>
         </Switch>
       </BrowserRouter>
