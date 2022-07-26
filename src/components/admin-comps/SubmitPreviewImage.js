@@ -10,24 +10,11 @@ function SubmitPreviewImage() {
 
     const englishValue2 = document.getElementById("english_name2").value;
 
-    // console.log(document.getElementById("english_name2").value);
-    // console.log(englishValue2)
-
     formData.append("[english_name]", englishValue2);
 
-    // let imagesLength = e.target.images.files.length;
     let eachImage = e.target.preview_image.files[0];
-    // console.log(e.target.preview_image.files[0]);
 
     formData.append("[preview_image]", eachImage);
-
-    // for (let blah in formData.entries()) {
-    //   console.log(blah);
-    // }
-
-    // for (var pair of formData.values()) {
-    //   console.log(pair);
-    // }
 
     submitToApi(formData);
   };
@@ -56,7 +43,6 @@ function SubmitPreviewImage() {
           <Form.Control
             type="file"
             accept="image/*"
-            // multiple="multiple"
             name="preview_image"
             id="preview_image"
           />

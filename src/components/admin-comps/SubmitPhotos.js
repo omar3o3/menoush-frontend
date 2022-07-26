@@ -22,7 +22,6 @@ function SubmitPhotos() {
     const englishValue = document.getElementById("english_name").value;
 
     formData.append("[english_name]", englishValue);
-    // console.log(englishValue);
 
     let imagesLength = e.target.images.files.length;
     let eachImage = e.target.images.files;
