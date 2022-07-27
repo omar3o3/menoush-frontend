@@ -10,12 +10,10 @@ function EditEnglishName({ englishName , dessertId}) {
   const [initialEnglishValue, setInitialEnglishValue] = useState(englishName);
 
   let handleEdit = (e) => {
-    // console.log(englishState);
 
     setEditState(!editState);
 
     if (e.target.textContent === "Done Editing") {
-      // if (editState) {
         fetch(`/edit-dessert`, {
           method: "PATCH",
           headers: {
