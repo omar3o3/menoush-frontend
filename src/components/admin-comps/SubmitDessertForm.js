@@ -22,25 +22,22 @@ function SubmitDessertForm() {
     fetch("/create-dessert", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify({
+      body: JSON.stringify({
         english_name: englishName,
         arabic_name: arabicName,
         price: price,
-        dessert_type: dessertType
-      })
+        dessert_type: dessertType,
+      }),
     })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-    .then(setEnglishName(""))
-    .then(setArabicName(""))
-    .then(setPrice(0))
-
-    // setEnglishName("")
-    // setArabicName("")
-    // setPrice(0)
-    // setDessertType("cookie")
+      .then((resp) => resp.json())
+      .then(
+        (data) => console.log(data),
+        setEnglishName(""),
+        setArabicName(""),
+        setPrice(0)
+      );
   }
 
   return (

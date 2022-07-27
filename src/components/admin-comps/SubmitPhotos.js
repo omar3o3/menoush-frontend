@@ -19,9 +19,6 @@ function SubmitPhotos() {
     e.preventDefault();
     const formData = new FormData();
 
-    // const englishValue = document.getElementById("english_name").value;
-    // formData.append("[english_name]", englishValue);
-
      const dessertId = document.getElementById("dessertId").value;
      formData.append("[id]", dessertId);
 
@@ -31,16 +28,14 @@ function SubmitPhotos() {
     for (var x = 0; x < imagesLength; x++) {
       formData.append("images[]", eachImage[x]);
     }
-
     // for (let blah in formData.entries()) {
     //   console.log(blah);
     // }
-
     // for (var pair of formData.values()) {
     //   console.log(pair);
     // }
-
     submitToApi(formData);
+    e.target.reset();
   };
 
   let submitToApi = (data) => {

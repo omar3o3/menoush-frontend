@@ -8,9 +8,6 @@ function SubmitPreviewImage() {
   let handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-
-    // const englishValue2 = document.getElementById("english_name2").value;
-  //  formData.append("[english_name]", englishValue2);
   
     const dessertId2 = document.getElementById("dessertId2").value;
     formData.append("[id]", dessertId2);
@@ -20,6 +17,7 @@ function SubmitPreviewImage() {
     formData.append("[preview_image]", eachImage2);
 
     submitToApi(formData);
+    e.target.reset();
   };
 
   let submitToApi = (data) => {
