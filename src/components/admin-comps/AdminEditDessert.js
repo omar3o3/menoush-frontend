@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import EditEnglishName from "./EditEnglishName";
 import EditArabicName from "./EditArabicName";
 import EditPrice from "./EditPrice";
+import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg";
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -19,15 +20,27 @@ function AdminEditDessert() {
       .then((data) => setDesserts(data));
   }, []);
 
-  console.log(desserts);
+//   console.log(desserts);
 
   return (
     <div>
       <Row>
         {desserts.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <Card style={{ width: "15rem" }}>
-              <Card.Img variant="top" src={dessert.preview_image} />
+            <Card style={{ width: "12rem" }}>
+              {dessert.preview_image_url ? (
+                <Card.Img
+                  className="mainImage"
+                  variant="top"
+                  src={dessert.preview_image_url}
+                />
+              ) : (
+                <Card.Img
+                  className="mainImage"
+                  variant="top"
+                  src={mainImagePlaceHolder}
+                />
+              )}
               <ListGroup className="list-group-flush">
                 <ListGroup.Item className="text-center">
                   <span>ID: </span>
