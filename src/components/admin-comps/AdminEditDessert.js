@@ -1,18 +1,16 @@
-import React , {useState , useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
 import EditEnglishName from "./EditEnglishName";
 import EditArabicName from "./EditArabicName";
 import EditPrice from "./EditPrice";
 
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
 function AdminEditDessert() {
-
   const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
@@ -21,7 +19,7 @@ function AdminEditDessert() {
       .then((data) => setDesserts(data));
   }, []);
 
-  console.log(desserts)
+  console.log(desserts);
 
   return (
     <div>
@@ -31,18 +29,22 @@ function AdminEditDessert() {
             <Card style={{ width: "15rem" }}>
               <Card.Img variant="top" src={dessert.preview_image} />
               <ListGroup className="list-group-flush">
-
                 <ListGroup.Item className="text-center">
-                    <span>ID: </span>
-                    <span>{dessert.id}</span>
+                  <span>ID: </span>
+                  <span>{dessert.id}</span>
                 </ListGroup.Item>
 
-                <EditEnglishName englishName={dessert.english_name} />
+                <EditEnglishName
+                  englishName={dessert.english_name}
+                  dessertId={dessert.id}
+                />
 
-                <EditArabicName arabicName={dessert.arabic_name} />
+                <EditArabicName
+                  arabicName={dessert.arabic_name}
+                  dessertId={dessert.id}
+                />
 
-                <EditPrice price={dessert.price} />
-
+                <EditPrice price={dessert.price} dessertId={dessert.id} />
               </ListGroup>
               <Button>Delete Dessert</Button>
             </Card>
@@ -53,4 +55,4 @@ function AdminEditDessert() {
   );
 }
 
-export default AdminEditDessert
+export default AdminEditDessert;
