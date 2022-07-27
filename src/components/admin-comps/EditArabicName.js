@@ -7,7 +7,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 function EditArabicName({ arabicName, dessertId }) {
   const [arabicState, setArabicState] = useState("");
   const [editState, setEditState] = useState(false);
-  const [initialArabicValue, setInitialEnglishValue] = useState(arabicName);
+  const [initialArabicValue, setInitialArabicValue] = useState(arabicName);
 
   let handleEdit = (e) => {
 
@@ -25,7 +25,7 @@ function EditArabicName({ arabicName, dessertId }) {
         }),
       })
         .then((resp) => resp.json())
-        .then((data) => setInitialEnglishValue(data.arabic_name));
+        .then((data) => setInitialArabicValue(data.arabic_name));
     }
   };
 
