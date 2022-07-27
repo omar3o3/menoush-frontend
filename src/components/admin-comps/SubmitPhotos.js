@@ -53,7 +53,7 @@ function SubmitPhotos() {
   return (
     <div>
       <Form className="m-3 mb-6" onSubmit={handleSubmit}>
-        <h1 className="text-center">Submit Dessert Photos</h1>
+        <h1 className="text-center">Submit Dessert Gallery Photos</h1>
 
         <Form.Group className="my-3">
           <Form.Label>English Name</Form.Label>

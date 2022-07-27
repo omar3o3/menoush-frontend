@@ -4,13 +4,16 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function SubmitPreviewImage() {
+  
   let handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
 
-    const englishValue2 = document.getElementById("english_name2").value;
-
-    formData.append("[english_name]", englishValue2);
+    // const englishValue2 = document.getElementById("english_name2").value;
+  //  formData.append("[english_name]", englishValue2);
+  
+    const dessertId = document.getElementById("dessertId").value;
+    formData.append("[id]", dessertId);
 
     let eachImage = e.target.preview_image.files[0];
 
@@ -31,15 +34,19 @@ function SubmitPreviewImage() {
   return (
     <div>
       <Form className="m-3 mb-6" onSubmit={handleSubmit}>
-        <h1 className="text-center">Submit Dessert Preview Photo</h1>
+        <h1 className="text-center">Submit Main Dessert Photo</h1>
 
-        <Form.Group className="my-3">
+        {/* <Form.Group className="my-3">
           <Form.Label>English Name</Form.Label>
           <Form.Control type="text" name="english_name2" id="english_name2" />
+        </Form.Group> */}
+        <Form.Group className="my-3">
+          <Form.Label>Dessert id</Form.Label>
+          <Form.Control type="number" name="dessertId" id="dessertId" />
         </Form.Group>
 
         <Form.Group className="my-3">
-          <Form.Label>Upload one or multiple images</Form.Label>
+          <Form.Label>Upload one image</Form.Label>
           <Form.Control
             type="file"
             accept="image/*"
