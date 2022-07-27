@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import profileImage from "../../images/profile-image.jpeg";
 
 function AdminNavBar({user , setUser}) {
 
@@ -23,8 +24,9 @@ function AdminNavBar({user , setUser}) {
           <Nav.Link href="/edit-desserts">Edit</Nav.Link>
           <Nav.Link href="/cart">Pending-Orders</Nav.Link>
           <Nav.Link href="/cart">Accepted-Orders</Nav.Link>
-          <Nav.Link href="/userProfile">*icon*</Nav.Link>
-          {/* <Nav.Link href="/logout">Logout</Nav.Link> */}
+          <Nav.Link href="/userProfile">
+            <img className="profileImage" src={profileImage} alt="profile icon" />
+          </Nav.Link>
         </Nav>
         <Button onClick={handleLogoutClick}>Logout</Button>
       </Container>
