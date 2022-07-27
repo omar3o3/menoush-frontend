@@ -24,12 +24,12 @@ function AdminEditDessert() {
   return (
     <div>
       {desserts.map((dessert) => (
-        <Card style={{ width: "18rem" }}>
+        <Card style={{ width: "18rem" }} key={dessert.id}>
           <Card.Img variant="top" src={dessert.preview_image} />
           <ListGroup className="list-group-flush">
 
             {/* <ListGroup.Item> */}
-              <EditEnglishName englishName ={desserts.english_name}/>
+              <EditEnglishName englishName ={dessert.english_name}/>
             {/* </ListGroup.Item> */}
 
             {/* <ListGroup.Item> */}
