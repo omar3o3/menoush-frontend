@@ -12,12 +12,12 @@ function SubmitPreviewImage() {
     // const englishValue2 = document.getElementById("english_name2").value;
   //  formData.append("[english_name]", englishValue2);
   
-    const dessertId = document.getElementById("dessertId").value;
-    formData.append("[id]", dessertId);
+    const dessertId2 = document.getElementById("dessertId2").value;
+    formData.append("[id]", dessertId2);
 
-    let eachImage = e.target.preview_image.files[0];
+    let eachImage2 = e.target.preview_image.files[0];
 
-    formData.append("[preview_image]", eachImage);
+    formData.append("[preview_image]", eachImage2);
 
     submitToApi(formData);
   };
@@ -42,7 +42,7 @@ function SubmitPreviewImage() {
         </Form.Group> */}
         <Form.Group className="my-3">
           <Form.Label>Dessert id</Form.Label>
-          <Form.Control type="number" name="dessertId" id="dessertId" />
+          <Form.Control type="number" name="dessertId2" id="dessertId2" />
         </Form.Group>
 
         <Form.Group className="my-3">
