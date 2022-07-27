@@ -7,6 +7,8 @@ import EditPrice from "./EditPrice";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 function AdminEditDessert() {
@@ -23,27 +25,30 @@ function AdminEditDessert() {
 
   return (
     <div>
-      {desserts.map((dessert) => (
-        <Card style={{ width: "18rem" }} key={dessert.id}>
-          <Card.Img variant="top" src={dessert.preview_image} />
-          <ListGroup className="list-group-flush">
+      <Row>
+        {desserts.map((dessert) => (
+          <Col lg={true} key={dessert.id} className="mx-4 my-3">
+            <Card style={{ width: "15rem" }}>
+              <Card.Img variant="top" src={dessert.preview_image} />
+              <ListGroup className="list-group-flush">
 
-            {/* <ListGroup.Item> */}
-              <EditEnglishName englishName ={dessert.english_name}/>
-            {/* </ListGroup.Item> */}
+                <ListGroup.Item className="text-center">
+                    <span>ID: </span>
+                    <span>{dessert.id}</span>
+                </ListGroup.Item>
 
-            {/* <ListGroup.Item> */}
-              <EditArabicName arabicName={dessert.arabic_name}/>
-            {/* </ListGroup.Item> */}
+                <EditEnglishName englishName={dessert.english_name} />
 
-            {/* <ListGroup.Item> */}
-              <EditPrice price={dessert.price}/>
-            {/* </ListGroup.Item> */}
+                <EditArabicName arabicName={dessert.arabic_name} />
 
-          </ListGroup>
-          <Button>Delete Dessert</Button>
-        </Card>
-      ))}
+                <EditPrice price={dessert.price} />
+
+              </ListGroup>
+              <Button>Delete Dessert</Button>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }

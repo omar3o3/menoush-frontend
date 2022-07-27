@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 function EditEnglishName({ englishName }) {
   return (
     <ListGroup.Item>
-      <span>English Name:</span>
+      <span>English Name: </span>
       <span>{englishName}</span>
       <div>
         <Button>
