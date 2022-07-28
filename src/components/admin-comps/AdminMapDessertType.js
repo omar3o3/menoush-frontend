@@ -25,8 +25,7 @@ function AdminMapDessertType() {
 
   return (
     <>
-      {/* <br /> */}
-      <Row className="my-1 mb-3">
+      <Row className="my-3 mx-2">
         <h1>Cookies...</h1>
         {cookies.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
@@ -58,8 +57,8 @@ function AdminMapDessertType() {
           </Col>
         ))}
       </Row>
-      {/* <br /> */}
-      {/* <br /> */}
+      <br />
+      <br />
     </>
   );
 }
