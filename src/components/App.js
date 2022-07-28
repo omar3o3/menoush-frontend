@@ -1,34 +1,39 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginComp from "./LoginComp";
 
-import UserHome from "./user-comps/UserHome"
-import UserAccount from "./user-comps/UserAccount"
-import UserNavBar from "./user-comps/UserNavBar"
-import GalleryComp from "./user-comps/GalleryComp"
-import UserCart from "./user-comps/UserCart"
+import UserHome from "./user-comps/UserHome";
+import UserAccount from "./user-comps/UserAccount";
+import UserNavBar from "./user-comps/UserNavBar";
+import GalleryComp from "./user-comps/GalleryComp";
+import UserCart from "./user-comps/UserCart";
 
-
-import AdminNavBar from "./admin-comps/AdminNavBar"
+import AdminNavBar from "./admin-comps/AdminNavBar";
 import CreateSection from "./admin-comps/CreateSection";
 // import AdminEditDessert from "./admin-comps/AdminEditDessert";
-import AdminMapDessertType from "./admin-comps/AdminMapDessertType"
+import AdminMapDessertType from "./admin-comps/AdminMapDessertType";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [desserts, setDesserts] = useState([]);
 
-  const [user , setUser] = useState(null)
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
-    useEffect(() => {
-      fetch("/me").then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
-        }
-      });
-    },[]);
+  useEffect(() => {
+    fetch("/desserts")
+      .then((resp) => resp.json())
+      .then((data) => setDesserts(data));
+  }, []);
 
-    // console.log(user)
+  // console.log(user)
 
   if (!user) return <LoginComp onLogin={setUser} />;
   // if (!user) return <h1>hi</h1>
@@ -43,7 +48,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <UserHome />
+            <UserHome desserts={desserts}/>
           </Route>
 
           <Route exact path="/login">
@@ -67,7 +72,7 @@ function App() {
           </Route>
 
           <Route exact path="/edit-desserts">
-            <AdminMapDessertType />
+            <AdminMapDessertType desserts={desserts} />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -4,14 +4,14 @@ import AdminEditDessert from "./AdminEditDessert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function AdminMapDessertType() {
-  const [desserts, setDesserts] = useState([]);
+function AdminMapDessertType({desserts}) {
+  // const [desserts, setDesserts] = useState([]);
 
-  useEffect(() => {
-    fetch("/desserts")
-      .then((resp) => resp.json())
-      .then((data) => setDesserts(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/desserts")
+  //     .then((resp) => resp.json())
+  //     .then((data) => setDesserts(data));
+  // }, []);
 
   let cookies = desserts.filter((dessert) => dessert.dessert_type === "cookie");
   let qatayefs = desserts.filter(
