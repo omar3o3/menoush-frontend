@@ -20,7 +20,13 @@ function AdminEditDessert() {
       .then((data) => setDesserts(data));
   }, []);
 
-//   console.log(desserts);
+  //   console.log(desserts);
+
+  // let cookies = desserts.filter(dessert => dessert.dessert_type === "cookie")
+  // let qatayefs = desserts.filter(dessert => dessert.dessert_type === "qatayef")
+  // let platters = desserts.filter(dessert => dessert.dessert_type === "platters")
+  // let kunafas = desserts.filter(dessert => dessert.dessert_type === "kunafa")
+  // let cakes = desserts.filter(dessert => dessert.dessert_type === "cakes")
 
   return (
     <div>
