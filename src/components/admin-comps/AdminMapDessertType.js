@@ -25,32 +25,32 @@ function AdminMapDessertType() {
 
   return (
     <>
-      <Row className="my-3 mx-2">
-        <h1>Cookies...</h1>
+      <Row className="my-3 mx-5">
+        <h1 className="display-4">Cookies...</h1>
         {cookies.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <AdminEditDessert dessert={dessert} />
           </Col>
         ))}
-        <h1>Qatayef...</h1>
+        <h1 className="display-4">Qatayefs...</h1>
         {qatayefs.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <AdminEditDessert dessert={dessert} />
           </Col>
         ))}
-        <h1>Platters...</h1>
+        <h1 className="display-4">Platters...</h1>
         {platters.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <AdminEditDessert dessert={dessert} />
           </Col>
         ))}
-        <h1>Kunafas...</h1>
+        <h1 className="display-4">Kunafas...</h1>
         {kunafas.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <AdminEditDessert dessert={dessert} />
           </Col>
         ))}
-        <h1>Cakes...</h1>
+        <h1 className="display-4">Cakes...</h1>
         {cakes.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <AdminEditDessert dessert={dessert} />
