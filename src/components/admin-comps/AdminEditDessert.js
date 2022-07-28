@@ -11,14 +11,14 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function AdminEditDessert() {
-  const [desserts, setDesserts] = useState([]);
+function AdminEditDessert({dessert}) {
+//   const [desserts, setDesserts] = useState([]);
 
-  useEffect(() => {
-    fetch("/desserts")
-      .then((resp) => resp.json())
-      .then((data) => setDesserts(data));
-  }, []);
+//   useEffect(() => {
+//     fetch("/desserts")
+//       .then((resp) => resp.json())
+//       .then((data) => setDesserts(data));
+//   }, []);
 
   //   console.log(desserts);
 
@@ -30,9 +30,9 @@ function AdminEditDessert() {
 
   return (
     <div>
-      <Row>
-        {desserts.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
+      {/* <Row> */}
+        {/* {desserts.map((dessert) => ( */}
+          {/* <Col lg={true} key={dessert.id} className="mx-4 my-3"> */}
             <Card style={{ width: "12rem" }}>
               {dessert.preview_image_url ? (
                 <Card.Img
@@ -67,9 +67,9 @@ function AdminEditDessert() {
               </ListGroup>
               <Button>Delete Dessert</Button>
             </Card>
-          </Col>
-        ))}
-      </Row>
+          {/* </Col> */}
+        {/* ))} */}
+      {/* </Row> */}
     </div>
   );
 }
