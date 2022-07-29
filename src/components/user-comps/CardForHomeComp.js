@@ -5,12 +5,21 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg";
 
-function CardForHomeComp({dessert , user}){
+function CardForHomeComp({ dessert, user }) {
 
   let handleClick = () => {
-    // user = 
-    console.log(user)
-  }
+    fetch("/add-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: user.id,
+        dessert_id: dessert.id
+      })
+    }).then((resp) => resp.json())
+    .then(data => console.log(data))
+  };
 
   return (
     <>
