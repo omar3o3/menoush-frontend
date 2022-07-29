@@ -13,7 +13,7 @@ function EditEnglishName({ englishName , dessertId}) {
 
     setEditState(!editState);
 
-    if (e.target.textContent === "Done Editing") {
+    if (e.target.textContent === "Done Editing" && englishState !== "") {
         fetch(`/edit-dessert`, {
           method: "PATCH",
           headers: {

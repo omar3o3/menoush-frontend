@@ -48,7 +48,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <UserHome desserts={desserts}/>
+            <UserHome desserts={desserts} user={user}/>
           </Route>
 
           <Route exact path="/login">

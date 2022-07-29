@@ -13,7 +13,7 @@ function EditArabicName({ arabicName, dessertId }) {
 
     setEditState(!editState);
 
-    if (e.target.textContent === "Done Editing") {
+    if (e.target.textContent === "Done Editing" && arabicState !== "") {
       fetch(`/edit-dessert`, {
         method: "PATCH",
         headers: {

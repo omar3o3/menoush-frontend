@@ -12,7 +12,7 @@ function EditPrice({price , dessertId}) {
     let handleEdit = (e) => {
       setEditState(!editState);
 
-      if (e.target.textContent === "Done Editing") {
+      if (e.target.textContent === "Done Editing" && priceState !== 0) {
         fetch(`/edit-dessert`, {
           method: "PATCH",
           headers: {

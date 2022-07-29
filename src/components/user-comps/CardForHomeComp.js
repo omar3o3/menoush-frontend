@@ -5,7 +5,12 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg";
 
-function CardForHomeComp({dessert}){
+function CardForHomeComp({dessert , user}){
+
+  let handleClick = () => {
+    // user = 
+    console.log(user)
+  }
 
   return (
     <>
@@ -28,7 +33,7 @@ function CardForHomeComp({dessert}){
           <ListGroup.Item>{dessert.arabic_name}</ListGroup.Item>
           <ListGroup.Item>{dessert.price}</ListGroup.Item>
         </ListGroup>
-        <Button>Add to Cart</Button>
+        <Button onClick={handleClick}>Add to Cart</Button>
       </Card>
     </>
   );
