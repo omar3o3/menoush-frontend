@@ -48,7 +48,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <UserHome desserts={desserts} user={user}/>
+            <UserHome desserts={desserts} user={user} />
           </Route>
 
           <Route exact path="/login">
@@ -60,7 +60,7 @@ function App() {
           </Route>
 
           <Route exact path="/cart">
-            <UserCart />
+            <UserCart user={user} />
           </Route>
 
           <Route exact path="/user-account">
