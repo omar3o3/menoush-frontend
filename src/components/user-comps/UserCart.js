@@ -1,28 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import RenderCartItems from "./RenderCartItems";
 
 function UserCart({ user }) {
+  const [cartDesserts, setCartDesserts] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("/retrieve-cart", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       user_id: user.id,
-  //     }),
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((data) => console.log(data));
-  // },[]);
+  useEffect(() => {
+    fetch(`/retrieve-cart/${user.id}`)
+      .then((resp) => resp.json())
+      .then((data) => setCartDesserts(data.show_cart_items));
+  }, [user]);
 
-    useEffect(() => {
-      fetch(`/retrieve-cart/${user.id}`)
-        .then((resp) => resp.json())
-        .then((data) => console.log(data));
-    }, [user]);
-
-  return <div>UserCart</div>;
+  return (
+    <>
+      {cartDesserts ? (
+        <RenderCartItems desserts={cartDesserts} />
+      ) : (
+        <h1 className="display-4">
+          {user.first_name}, you do not currently have any items in your cart.
+        </h1>
+      )}
+    </>
+  );
 }
 
 export default UserCart;
