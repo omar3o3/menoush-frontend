@@ -17,7 +17,7 @@ function UserCart({ userId, cart_owner }) {
 
   return (
     <>
-      {cart ? (
+      {cart && cart.cart_items.length !== 0 ? (
         <RenderCartItems
           dessertsInCart={cart.show_cart_items}
           cartItemAssocation={cart.cart_items}
