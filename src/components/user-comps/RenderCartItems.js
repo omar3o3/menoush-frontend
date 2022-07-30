@@ -4,11 +4,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 
 function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
-    // console.log(dessertsInCart);
+  // console.log(dessertsInCart);
   //   console.log(cartItemAssocation);
   const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
 
-    // console.log(reflectiveDesserts);
+  // console.log(reflectiveDesserts);
 
   let handleRemove = (dessert) => {
     let selectedCartItemAssociated = cartItemAssocation.find(
@@ -16,6 +16,8 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
     ).id;
     // console.log(dessert);
     // console.log(selectedCartItemAssociated);
+    let desId = dessert.id;
+    let cartAfterDelete = reflectiveDesserts.filter((des) => des.id !== desId);
 
     fetch("/remove-from-cart", {
       method: "DELETE",
@@ -25,7 +27,9 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
       body: JSON.stringify({
         cart_item_id: selectedCartItemAssociated,
       }),
-    })
+    }).then((resp) => {
+      if (resp.ok) setReflectiveDesserts(cartAfterDelete);
+    });
   };
 
   return (
