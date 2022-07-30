@@ -1,22 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import RenderCartItems from "./RenderCartItems";
 
-function UserCart({ user }) {
-  const [cartDesserts, setCartDesserts] = useState([]);
+function UserCart({ userId, cart_owner }) {
+  const [cart, setCart] = useState();
 
   useEffect(() => {
-    fetch(`/retrieve-cart/${user.id}`)
+    fetch(`/retrieve-cart/${userId}`)
       .then((resp) => resp.json())
-      .then((data) => setCartDesserts(data.show_cart_items));
-  }, [user]);
+      .then((data) => setCart(data));
+  }, [userId]);
+
+  // console.log(cart)
+  // console.log(cart.show_cart_items)
+  // console.log(userId);
+  // console.log("hi from userCart");
 
   return (
     <>
-      {cartDesserts ? (
-        <RenderCartItems desserts={cartDesserts} />
+      {cart ? (
+        <RenderCartItems
+          dessertsInCart={cart.show_cart_items}
+          cartItemAssocation={cart.cart_items}
+        />
       ) : (
         <h1 className="display-4">
-          {user.first_name}, you do not currently have any items in your cart.
+          {cart_owner}, you do not currently have any items in your cart.
         </h1>
       )}
     </>

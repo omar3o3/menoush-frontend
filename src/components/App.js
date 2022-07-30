@@ -17,7 +17,7 @@ import AdminMapDessertType from "./admin-comps/AdminMapDessertType";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [desserts, setDesserts] = useState([]);
+  // const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -27,11 +27,11 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/desserts")
-      .then((resp) => resp.json())
-      .then((data) => setDesserts(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/desserts")
+  //     .then((resp) => resp.json())
+  //     .then((data) => setDesserts(data));
+  // }, []);
 
   // console.log(user)
 
@@ -48,31 +48,27 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <UserHome desserts={desserts} user={user} />
+            <UserHome user={user} />
           </Route>
-
+          {/* desserts={desserts} */}
           <Route exact path="/login">
             <LoginComp />
           </Route>
-
           <Route exact path="/gallery">
             <GalleryComp />
           </Route>
-
           <Route exact path="/cart">
-            <UserCart user={user} />
+            <UserCart userId={user.id} cart_owner={user.first_name} />
           </Route>
-
           <Route exact path="/user-account">
             <UserAccount />
           </Route>
-
           <Route exact path="/create">
             <CreateSection />
           </Route>
-
           <Route exact path="/edit-desserts">
-            <AdminMapDessertType desserts={desserts} />
+            <AdminMapDessertType />
+            {/* desserts={desserts} */}
           </Route>
         </Switch>
       </BrowserRouter>

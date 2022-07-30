@@ -1,17 +1,29 @@
-import React, {useState , useEffect} from 'react'
-import CardForHomeComp from "./CardForHomeComp"
+import React, { useState, useEffect } from "react";
+import CardForHomeComp from "./CardForHomeComp";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function UserHome({desserts , user}) {
+function UserHome({ user }) {
+  const [desserts, setDesserts] = useState([]);
 
-    let cookies = desserts.filter(dessert => dessert.dessert_type === "cookie")
-    let qatayefs = desserts.filter(dessert => dessert.dessert_type === "qatayef")
-    let platters = desserts.filter(dessert => dessert.dessert_type === "platter")
-    let kunafas = desserts.filter(dessert => dessert.dessert_type === "kunafa")
-    let cakes = desserts.filter(dessert => dessert.dessert_type === "cake")
-    
+  useEffect(() => {
+    fetch("/desserts")
+      .then((resp) => resp.json())
+      .then((data) => setDesserts(data));
+  }, []);
+
+  let cookies = desserts.filter((dessert) => dessert.dessert_type === "cookie");
+  let qatayefs = desserts.filter(
+    (dessert) => dessert.dessert_type === "qatayef"
+  );
+  let platters = desserts.filter(
+    (dessert) => dessert.dessert_type === "platter"
+  );
+  let kunafas = desserts.filter((dessert) => dessert.dessert_type === "kunafa");
+  let cakes = desserts.filter((dessert) => dessert.dessert_type === "cake");
+
+  // console.log("hi from userHome");
 
   return (
     // <CardForHomeComp desserts = {desserts}/>
@@ -52,4 +64,4 @@ function UserHome({desserts , user}) {
   );
 }
 
-export default UserHome
+export default UserHome;
