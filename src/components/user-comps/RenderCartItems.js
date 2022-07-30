@@ -4,18 +4,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 
 function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
-  // console.log(dessertsInCart);
-  //   console.log(cartItemAssocation);
-  const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
 
-  // console.log(reflectiveDesserts);
+  const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
 
   let handleRemove = (dessert) => {
     let selectedCartItemAssociated = cartItemAssocation.find(
       (item) => item.dessert_id === dessert.id
     ).id;
-    // console.log(dessert);
-    // console.log(selectedCartItemAssociated);
     let desId = dessert.id;
     let cartAfterDelete = reflectiveDesserts.filter((des) => des.id !== desId);
 
@@ -51,27 +46,8 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      {/* <h1>hi from render cart items</h1> */}
     </>
   );
 }
 
 export default RenderCartItems;
-
-// let id = dessert.id
-// let updatedCart = dessertsState
-// setDessertsState(updatedCart)
-// console.log(dessert);
-// fetch("/remove-from-cart", {
-//   method: "DELETE",
-//   headers: {
-//     "Content-type": "application/json",
-//   },
-//   body: JSON.stringify({
-//     cart_item_id: dessert.id,
-//   }),
-// })
-// .then((resp) => resp.json())
-// .then(data => console.log(data))
-//   .then(updatedCart.filter((dessert) => dessert.id !== id))
-//   .then(setDessertsState(updatedCart));
