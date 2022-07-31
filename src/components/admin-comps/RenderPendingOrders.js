@@ -46,6 +46,14 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
                 <p className="lead">
                   {desserts.map((dessert) => (
                     <li>
+                      <span className="fw-bold">
+                        {
+                          cartItems.find(
+                            (item) => item.dessert_id === dessert.id
+                          ).quantity
+                        }
+                        &nbsp;&nbsp;
+                      </span>
                       {dessert.english_name}
                       &nbsp;&nbsp; / &nbsp;&nbsp;
                       {dessert.arabic_name}
