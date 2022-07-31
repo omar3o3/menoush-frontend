@@ -25,3 +25,17 @@ code {
 .cartBadge{
  float: right 
 }
+
+/* .pendingTopRow{ */
+  /* background-color: bisque; */
+  /* height: 5rem; */
+/* } */
+
+.pendingOrderBottomMargin{
+  margin-bottom: 15rem;
+  margin-top: 2rem;
+}
+
+.individalPendingOrderMargin{
+  margin-bottom: 2rem;
+}

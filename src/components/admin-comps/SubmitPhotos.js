@@ -4,15 +4,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function SubmitPhotos() {
-  const [desserts, setDesserts] = useState([]);
+  // const [desserts, setDesserts] = useState([]);
 
-  useEffect(() => {
-    fetch("/desserts")
-      .then((resp) => resp.json())
-      .then((data) => setDesserts(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/desserts")
+  //     .then((resp) => resp.json())
+  //     .then((data) => setDesserts(data));
+  // }, []);
 
-  console.log(desserts);
+  // console.log(desserts);
   // desserts.map(dessert => console.log(dessert.images_url))
 
   let handleSubmit = (e) => {
@@ -44,7 +44,7 @@ function SubmitPhotos() {
       body: data,
     })
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
+      // .then((data) => console.log(data));
   };
 
   return (

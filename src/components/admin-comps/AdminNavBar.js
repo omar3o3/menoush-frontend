@@ -22,10 +22,14 @@ function AdminNavBar({user , setUser}) {
         <Nav className="me-auto">
           <Nav.Link href="/create">Create</Nav.Link>
           <Nav.Link href="/edit-desserts">Edit</Nav.Link>
-          <Nav.Link href="/cart">Pending-Orders</Nav.Link>
-          <Nav.Link href="/cart">Accepted-Orders</Nav.Link>
+          <Nav.Link href="/pending-orders">Pending-Orders</Nav.Link>
+          <Nav.Link href="/accepted-orders">Accepted-Orders</Nav.Link>
           <Nav.Link href="/userProfile">
-            <img className="profileImage" src={profileImage} alt="profile icon" />
+            <img
+              className="profileImage"
+              src={profileImage}
+              alt="profile icon"
+            />
           </Nav.Link>
         </Nav>
         <Button onClick={handleLogoutClick}>Logout</Button>

@@ -14,6 +14,8 @@ import AdminNavBar from "./admin-comps/AdminNavBar";
 import CreateSection from "./admin-comps/CreateSection";
 // import AdminEditDessert from "./admin-comps/AdminEditDessert";
 import AdminMapDessertType from "./admin-comps/AdminMapDessertType";
+import PendingOrders from "./admin-comps/PendingOrders";
+import AcceptedOrders from "./admin-comps/AcceptedOrders";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,7 +52,6 @@ function App() {
           <Route exact path="/">
             <UserHome user={user} />
           </Route>
-          {/* desserts={desserts} */}
           <Route exact path="/login">
             <LoginComp />
           </Route>
@@ -68,7 +69,12 @@ function App() {
           </Route>
           <Route exact path="/edit-desserts">
             <AdminMapDessertType />
-            {/* desserts={desserts} */}
+          </Route>
+          <Route exact path="/pending-orders">
+            <PendingOrders />
+          </Route>
+          <Route exact path="/accepted-orders">
+            <AcceptedOrders />
           </Route>
         </Switch>
       </BrowserRouter>
