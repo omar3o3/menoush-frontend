@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 
-function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
-
+function RenderCartItems({
+  dessertsInCart,
+  cartItemAssocation,
+  userId,
+  setCart,
+}) {
   const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
   const [liveItemsAss, setLiveItemAss] = useState(cartItemAssocation);
   const [liveTotal, setLiveTotal] = useState(
@@ -12,15 +16,19 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
       .map((item) => parseFloat(item.self_total))
       .reduce((partialSum, a) => partialSum + a, 0)
   );
-  // console.log(reflectiveDesserts);
-  // console.log(cartItemAssocation);
-  console.log(liveTotal);
+  console.log(reflectiveDesserts);
+  console.log(cartItemAssocation);
+  // console.log(liveTotal);
 
   let handleRemove = (dessert) => {
-    let selectedCartItem = liveItemsAss.find((item) => item.dessert_id === dessert.id).id;
+    let selectedCartItem = liveItemsAss.find(
+      (item) => item.dessert_id === dessert.id
+    ).id;
     let desId = dessert.id;
     let cartAfterDelete = reflectiveDesserts.filter((des) => des.id !== desId);
-    let newItemTotal = liveTotal - liveItemsAss.find((item) => item.dessert_id === dessert.id).self_total;
+    let newItemTotal =
+      liveTotal -
+      liveItemsAss.find((item) => item.dessert_id === dessert.id).self_total;
     console.log(newItemTotal);
 
     fetch("/remove-from-cart", {
@@ -37,6 +45,23 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
         setLiveTotal(newItemTotal);
       }
     });
+  };
+
+  let handleCheckout = () => {
+    fetch("/checkout-cart", {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCart(data)
+        //set an alert alert state to true to let user know order was place
+      });
   };
 
   return (
@@ -68,7 +93,9 @@ function RenderCartItems({ dessertsInCart, cartItemAssocation }) {
         ))}
         <ListGroup.Item variant="secondary">
           <span className="h4">
-            <Badge bg="success btn">Checkout Cart</Badge>
+            <Badge bg="success btn" onClick={() => handleCheckout()}>
+              Checkout Cart
+            </Badge>
           </span>
           <p className="h4 cartBadge">
             Total:&nbsp;&nbsp;$

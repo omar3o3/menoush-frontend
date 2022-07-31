@@ -21,6 +21,8 @@ function UserCart({ userId, cart_owner }) {
         <RenderCartItems
           dessertsInCart={cart.show_cart_items}
           cartItemAssocation={cart.cart_items}
+          userId={userId}
+          setCart={setCart}
         />
       ) : (
         <h1 className="display-4">
