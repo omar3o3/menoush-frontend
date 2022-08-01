@@ -24,13 +24,13 @@ function AdminNavBar({user , setUser}) {
           <Nav.Link href="/edit-desserts">Edit</Nav.Link>
           <Nav.Link href="/pending-orders">Pending-Orders</Nav.Link>
           <Nav.Link href="/accepted-orders">Accepted-Orders</Nav.Link>
-          <Nav.Link href="/userProfile">
+          {/* <Nav.Link href="/userProfile">
             <img
               className="profileImage"
               src={profileImage}
               alt="profile icon"
             />
-          </Nav.Link>
+          </Nav.Link> */}
         </Nav>
         <Button onClick={handleLogoutClick}>Logout</Button>
       </Container>
