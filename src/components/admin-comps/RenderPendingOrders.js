@@ -10,10 +10,36 @@ import InputGroup from "react-bootstrap/InputGroup";
 import ListGroup from "react-bootstrap/ListGroup";
 
 function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
-  console.log(order);
+  //   console.log(order);
+
+  const [dayState, setDayState] = useState();
+
   let totalPrice = cartItems
     .map((item) => parseFloat(item.self_total))
     .reduce((partialSum, a) => partialSum + a, 0);
+
+  let handleAccept = () => {
+    // console.log(order.id);
+    if (dayState !== 0 && !isNaN(dayState) && dayState > 0) {
+        fetch("/accept-order", {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            // order: order,
+            order_id: order.id,
+            days_to_complete: dayState,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+    }
+  };
+
+  let handleDecline = () => {
+    console.log(order);
+  };
 
   return (
     <>
@@ -25,9 +51,9 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
           <Col className="border-end border-2 border-dark">
             <div>Name: {UserFullName}</div>
           </Col>
-          <Col className="border-end border-dark">
+          {/* <Col className="border-end border-dark">
             <div>Date Ordered: {}</div>
-          </Col>
+          </Col> */}
           <Col className="">
             <div>Total: ${totalPrice}</div>
           </Col>
@@ -45,7 +71,7 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
               <ListGroup.Item>
                 <p className="lead">
                   {desserts.map((dessert) => (
-                    <li>
+                    <li key={dessert.id}>
                       <span className="fw-bold">
                         {
                           cartItems.find(
@@ -67,14 +93,19 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
 
         <Row className="border-top border-dark">
           <ButtonGroup className="p-0">
-            <Button variant="success">Accept</Button>
+            <Button variant="success" onClick={() => handleAccept()}>
+              Accept
+            </Button>
             <InputGroup style={{ width: "33%" }}>
               <Form.Control
                 type="number"
                 placeholder="days needed to complete"
+                onChange={(e) => setDayState(parseInt(e.target.value))}
               />
             </InputGroup>
-            <Button variant="danger">Decline</Button>
+            <Button variant="danger" onClick={() => handleDecline()}>
+              Decline
+            </Button>
           </ButtonGroup>
         </Row>
       </Container>
