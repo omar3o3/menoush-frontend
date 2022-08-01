@@ -17,7 +17,7 @@ function AdminNavBar({user , setUser}) {
     }
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" sticky="top">
       <Container className="fs-3">
         <Nav className="me-auto">
           <Nav.Link href="/create">Create</Nav.Link>
