@@ -9,6 +9,7 @@ import UserAccount from "./user-comps/UserAccount";
 import UserNavBar from "./user-comps/UserNavBar";
 import GalleryComp from "./user-comps/GalleryComp";
 import UserCart from "./user-comps/UserCart";
+import OrderHistory from "./user-comps/OrderHistory";
 
 import AdminNavBar from "./admin-comps/AdminNavBar";
 import CreateSection from "./admin-comps/CreateSection";
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <UserCart userId={user.id} cart_owner={user.first_name} />
+          </Route>
+          <Route exact path="/order-history">
+            <OrderHistory userId={user.id} cart_owner={user.first_name} />
           </Route>
           <Route exact path="/user-account">
             <UserAccount />

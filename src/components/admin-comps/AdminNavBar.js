@@ -20,10 +20,14 @@ function AdminNavBar({user , setUser}) {
     <Navbar bg="dark" variant="dark" sticky="top">
       <Container className="fs-3">
         <Nav className="me-auto">
-          <Nav.Link href="/create">Create</Nav.Link>
-          <Nav.Link href="/edit-desserts">Edit</Nav.Link>
-          <Nav.Link href="/pending-orders">Pending-Orders</Nav.Link>
-          <Nav.Link href="/accepted-orders">Accepted-Orders</Nav.Link>
+          <Nav.Link href="/create">Create&nbsp;&nbsp;&nbsp;</Nav.Link>
+          <Nav.Link href="/edit-desserts">Edit&nbsp;&nbsp;&nbsp;</Nav.Link>
+          <Nav.Link href="/pending-orders">
+            Pending Orders&nbsp;&nbsp;&nbsp;
+          </Nav.Link>
+          <Nav.Link href="/accepted-orders">
+            Accepted Orders&nbsp;&nbsp;&nbsp;
+          </Nav.Link>
           {/* <Nav.Link href="/userProfile">
             <img
               className="profileImage"

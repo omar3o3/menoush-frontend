@@ -21,9 +21,12 @@ function UserNavBar({ user, setUser }) {
     <Navbar bg="dark" variant="dark" sticky="top">
       <Container className="fs-3 justify-content-center">
         <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/gallery">Gallery</Nav.Link>
-          <Nav.Link href="/cart">Cart</Nav.Link>
+          <Nav.Link href="/">Home&nbsp;&nbsp;&nbsp;</Nav.Link>
+          <Nav.Link href="/gallery">Gallery&nbsp;&nbsp;&nbsp;</Nav.Link>
+          <Nav.Link href="/cart">Cart&nbsp;&nbsp;&nbsp;</Nav.Link>
+          <Nav.Link href="/order-history">
+            Order History&nbsp;&nbsp;&nbsp;
+          </Nav.Link>
           {/* <Nav.Link href="/userProfile">
             <img
               className="profileImage"
