@@ -38,7 +38,18 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
   };
 
   let handleDecline = () => {
-    console.log(order);
+    // console.log(order);
+    fetch("/decline-order", {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        order_id: order.id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   return (
