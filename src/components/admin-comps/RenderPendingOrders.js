@@ -19,7 +19,7 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
     <>
       <Container
         className="border border-2 border-dark rounded individalPendingOrderMargin"
-        style={{ width: "60%" }}
+        style={{ width: "70%" }}
       >
         <Row style={{ backgroundColor: "#FFCDD2" }} className="fs-3 fw-light">
           <Col className="border-end border-2 border-dark">
@@ -68,7 +68,7 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
         <Row className="border-top border-dark">
           <ButtonGroup className="p-0">
             <Button variant="success">Accept</Button>
-            <InputGroup style={{ width: "28%" }}>
+            <InputGroup style={{ width: "33%" }}>
               <Form.Control
                 type="number"
                 placeholder="days needed to complete"
