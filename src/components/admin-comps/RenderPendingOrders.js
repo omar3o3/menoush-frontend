@@ -62,14 +62,22 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
           className="border border-2 border-dark rounded individalPendingOrderMargin"
           style={{ width: "70%" }}
         >
-          <Row style={{ backgroundColor: "#FFCDD2" }} className="fs-3 fw-light">
-            <Col className="border-end border-2 border-dark">
+          <Row style={{ backgroundColor: "#FFCDD2" }} className="fs-3 fw-light text-center">
+            <Col className="border-bottom border-2 border-dark">
               <div>Name: {UserFullName}</div>
             </Col>
             {/* <Col className="border-end border-dark">
             <div>Date Ordered: {}</div>
           </Col> */}
-            <Col className="">
+          </Row>
+          <Row
+            style={{ backgroundColor: "#FFCDD2" }}
+            className="fs-3 fw-light text-center"
+          >
+            <Col className="border-end border-2 border-dark">
+              <div>Email: {order.user_email}</div>
+            </Col>
+            <Col >
               <div>Total: ${totalPrice}</div>
             </Col>
           </Row>

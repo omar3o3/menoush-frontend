@@ -29,6 +29,8 @@ function RenderAcceptedOrders({ order, cartItems, desserts, UserFullName }) {
     });
   };
 
+  console.log(order)
+
   return (
     <>
       {showState ? (
@@ -38,7 +40,7 @@ function RenderAcceptedOrders({ order, cartItems, desserts, UserFullName }) {
         >
           <Row
             style={{ backgroundColor: "#FFCDD2" }}
-            className="fs-3 fw-light text-center"
+            className="fs-3 fw-light text-center border-bottom border-2 border-dark"
           >
             <Col className="border-end border-2 border-dark">
               <div>Name: {UserFullName}</div>
@@ -46,10 +48,18 @@ function RenderAcceptedOrders({ order, cartItems, desserts, UserFullName }) {
             {/* <Col className="border-end border-dark">
             <div>Date Ordered: {}</div>
           </Col> */}
-            <Col className="border-end border-2 border-dark">
-              <div>Complete with: {order.days_to_complete} days</div>
+            <Col>
+              <div>Complete within: {order.days_to_complete} days</div>
             </Col>
-            <Col className="">
+          </Row>
+          <Row
+            style={{ backgroundColor: "#FFCDD2" }}
+            className="fs-3 fw-light text-center"
+          >
+            <Col className="border-end border-2 border-dark">
+              <div>Email: {order.user_email}</div>
+            </Col>
+            <Col>
               <div>Total: ${totalPrice}</div>
             </Col>
           </Row>

@@ -48,6 +48,7 @@ function RenderCartItems({
   };
 
   let handleCheckout = () => {
+    // console.log(userId)
     fetch("/checkout-cart", {
       method: "PATCH",
       headers: {
@@ -58,10 +59,9 @@ function RenderCartItems({
       }),
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        setCart(data)
+      .then((data) => setCart(data));
+      // .then((data) => console.log(data));
         //set an alert alert state to true to let user know order was place
-      });
   };
 
   return (

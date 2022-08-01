@@ -37,6 +37,7 @@ function App() {
   // }, []);
 
   // console.log(user)
+  // console.log(user.id)
 
   if (!user) return <LoginComp onLogin={setUser} />;
   // if (!user) return <h1>hi</h1>
