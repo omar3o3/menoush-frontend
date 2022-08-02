@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardForHomeComp from "./CardForHomeComp";
+import HorizontalLine from "./HorizontalLine";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -28,32 +29,37 @@ function UserHome({ user }) {
   return (
     // <CardForHomeComp desserts = {desserts}/>
     <>
-      <Row className="my-3 mx-5">
-        <h1 className="display-4">Cookies...</h1>
+      <Row className="my-3 mx-3">
+        {/* <h1 className="display-4">Cookies</h1> */}
+        <HorizontalLine title={"Cookies"} />
         {cookies.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <CardForHomeComp dessert={dessert} user={user} />
           </Col>
         ))}
-        <h1 className="display-4">Qatayefs...</h1>
+        {/* <h1 className="display-4">Qatayefs</h1> */}
+        <HorizontalLine title={"Qatayefs"} />
         {qatayefs.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <CardForHomeComp dessert={dessert} user={user} />
           </Col>
         ))}
-        <h1 className="display-4">Platters...</h1>
+        {/* <h1 className="display-4">Platters</h1> */}
+        <HorizontalLine title={"Platters"} />
         {platters.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <CardForHomeComp dessert={dessert} user={user} />
           </Col>
         ))}
-        <h1 className="display-4">Kunafas...</h1>
+        {/* <h1 className="display-4">Kunafas</h1> */}
+        <HorizontalLine title={"Kunafas"} />
         {kunafas.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <CardForHomeComp dessert={dessert} user={user} />
           </Col>
         ))}
-        <h1 className="display-4">Cakes...</h1>
+        {/* <h1 className="display-4">Cakes</h1> */}
+        <HorizontalLine title={"Cakes"}/>
         {cakes.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
             <CardForHomeComp dessert={dessert} user={user} />

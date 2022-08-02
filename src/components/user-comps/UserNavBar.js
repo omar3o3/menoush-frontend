@@ -1,14 +1,22 @@
-import React from "react";
+import React , {useState} from "react";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import profileImage from "../../images/profile-image.jpeg";
 
-function UserNavBar({ user, setUser }) {
+function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -18,15 +26,41 @@ function UserNavBar({ user, setUser }) {
   }
 
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
+    <Navbar sticky="top" className="userNavBar">
       <Container className="fs-3 justify-content-center">
         <Nav className="me-auto">
-          <Nav.Link href="/">Home&nbsp;&nbsp;&nbsp;</Nav.Link>
-          <Nav.Link href="/gallery">Gallery&nbsp;&nbsp;&nbsp;</Nav.Link>
-          <Nav.Link href="/cart">Cart&nbsp;&nbsp;&nbsp;</Nav.Link>
-          <Nav.Link href="/order-history">
-            Order History&nbsp;&nbsp;&nbsp;
+          <Nav.Link
+            href="/"
+            style={{ color: navBarTextColor }}
+            className="navBarLinks"
+          >
+            Home
           </Nav.Link>
+          &nbsp;&nbsp;&nbsp;
+          <Nav.Link
+            href="/gallery"
+            style={{ color: navBarTextColor }}
+            className="navBarLinks"
+          >
+            Gallery
+          </Nav.Link>
+          &nbsp;&nbsp;&nbsp;
+          <Nav.Link
+            href="/cart"
+            style={{ color: navBarTextColor }}
+            className="navBarLinks"
+          >
+            Cart
+          </Nav.Link>
+          &nbsp;&nbsp;&nbsp;
+          <Nav.Link
+            href="/order-history"
+            style={{ color: navBarTextColor }}
+            className="navBarLinks"
+          >
+            Order History
+          </Nav.Link>
+          &nbsp;&nbsp;&nbsp;
           {/* <Nav.Link href="/userProfile">
             <img
               className="profileImage"
@@ -35,18 +69,21 @@ function UserNavBar({ user, setUser }) {
             />
           </Nav.Link> */}
         </Nav>
-        <Button onClick={handleLogoutClick}>Logout</Button>
+        <Button
+          onClick={handleLogoutClick}
+          className="border-0 logOutButton"
+          style={{
+            backgroundColor: isHovering ? "#f1f1f3" : navBarTextColor,
+            color: isHovering ? "black" : "#f1f1f3",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Logout
+        </Button>
       </Container>
     </Navbar>
   );
 }
 
 export default UserNavBar;
-
-// Home
-// about
-// gallery
-// cart
-// account
-// logout
-// signup form?

@@ -18,6 +18,9 @@ import AdminMapDessertType from "./admin-comps/AdminMapDessertType";
 import PendingOrders from "./admin-comps/PendingOrders";
 import AcceptedOrders from "./admin-comps/AcceptedOrders";
 
+let navBarTextColor = "#d8a941";
+let homeCardButtonColor = "#654813"
+
 function App() {
   const [user, setUser] = useState(null);
   // const [desserts, setDesserts] = useState([]);
@@ -43,11 +46,20 @@ function App() {
   // if (!user) return <h1>hi</h1>
 
   return (
-    <>
+    <div style={{ backgroundColor: "#f1f1f3" }}>
       {user && user.admin ? (
-        <AdminNavBar user={user} setUser={setUser} />
+        <AdminNavBar
+          user={user}
+          setUser={setUser}
+          navBarTextColor={navBarTextColor}
+        />
       ) : (
-        <UserNavBar user={user} setUser={setUser} />
+        <UserNavBar
+          user={user}
+          setUser={setUser}
+          navBarTextColor={navBarTextColor}
+          homeCardButtonColor={homeCardButtonColor}
+        />
       )}
       <BrowserRouter>
         <Switch>
@@ -83,7 +95,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

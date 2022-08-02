@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg";
 
 function CardForHomeComp({ dessert, user }) {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   let handleClick = () => {
     fetch("/add-to-cart", {
@@ -15,15 +27,19 @@ function CardForHomeComp({ dessert, user }) {
       },
       body: JSON.stringify({
         user_id: user.id,
-        dessert_id: dessert.id
-      })
-    }).then((resp) => resp.json())
-    .then(data => console.log(data))
+        dessert_id: dessert.id,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => console.log(data));
   };
 
   return (
-    <>
-      <Card style={{ width: "12rem" }}>
+    <div>
+      <Card
+        style={{ width: "13rem" }}
+        className="border-2 homePageCard text-center"
+      >
         {dessert.preview_image_url ? (
           <Card.Img
             className="mainImage"
@@ -32,19 +48,40 @@ function CardForHomeComp({ dessert, user }) {
           />
         ) : (
           <Card.Img
-            className="mainImage"
+            className="mainImage rounded-circle"
             variant="top"
             src={mainImagePlaceHolder}
           />
         )}
-        <ListGroup className="list-group-flush">
+        <Row>
+          <Col className="px-3 my-1">{dessert.english_name}</Col>
+        </Row>
+        <Row>
+          <Col className="px-3 my-1">{dessert.arabic_name}</Col>
+        </Row>
+        <Row>
+          <Col className="px-3 my-1">${dessert.price}</Col>
+        </Row>
+        {/* <ListGroup className="list-group-flush" style={{}}>
           <ListGroup.Item>{dessert.english_name}</ListGroup.Item>
           <ListGroup.Item>{dessert.arabic_name}</ListGroup.Item>
           <ListGroup.Item>{dessert.price}</ListGroup.Item>
-        </ListGroup>
-        <Button onClick={handleClick}>Add to Cart</Button>
+        </ListGroup> */}
+        <Button
+          onClick={handleClick}
+          className="addCartButton border-0"
+          style={{
+            backgroundColor: isHovering ? "#1d1a0c" : "#654813",
+            color: "white",
+            // color: isHovering ? "#d8a941" : "white",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Add to Cart
+        </Button>
       </Card>
-    </>
+    </div>
   );
 }
 
