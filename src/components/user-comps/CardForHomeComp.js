@@ -37,7 +37,7 @@ function CardForHomeComp({ dessert, user }) {
   return (
     <div>
       <Card
-        style={{ width: "13rem" }}
+        style={{ width: "13rem", backgroundColor: "white" }}
         className="border-2 homePageCard text-center"
       >
         {dessert.preview_image_url ? (
@@ -60,14 +60,33 @@ function CardForHomeComp({ dessert, user }) {
           <Col className="px-3 my-1">{dessert.arabic_name}</Col>
         </Row>
         <Row>
-          <Col className="px-3 my-1">${dessert.price}</Col>
+          <Col className="pe-0">Price: ${dessert.price}</Col>
+          <Col className="ps-0">
+            <Button
+              onClick={handleClick}
+              className="addCartButton border-1 border-dark sm"
+              style={{
+                backgroundColor: isHovering ? "#1d1a0c" : "white",
+                // #654813
+                // color: isHovering ? "#d8a941" : "black",
+                // color: isHovering ? "#d8a941" : "white",
+                color: isHovering ? "white" : "black",
+                width: "100%",
+              }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              size="sm"
+            >
+              Add to Cart
+            </Button>
+          </Col>
         </Row>
         {/* <ListGroup className="list-group-flush" style={{}}>
           <ListGroup.Item>{dessert.english_name}</ListGroup.Item>
           <ListGroup.Item>{dessert.arabic_name}</ListGroup.Item>
           <ListGroup.Item>{dessert.price}</ListGroup.Item>
         </ListGroup> */}
-        <Button
+        {/* <Button
           onClick={handleClick}
           className="addCartButton border-0"
           style={{
@@ -79,7 +98,7 @@ function CardForHomeComp({ dessert, user }) {
           onMouseLeave={handleMouseLeave}
         >
           Add to Cart
-        </Button>
+        </Button> */}
       </Card>
     </div>
   );

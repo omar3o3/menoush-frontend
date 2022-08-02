@@ -16,8 +16,8 @@ function RenderCartItems({
       .map((item) => parseFloat(item.self_total))
       .reduce((partialSum, a) => partialSum + a, 0)
   );
-  console.log(reflectiveDesserts);
-  console.log(cartItemAssocation);
+  // console.log(reflectiveDesserts);
+  // console.log(cartItemAssocation);
   // console.log(liveTotal);
 
   let handleRemove = (dessert) => {

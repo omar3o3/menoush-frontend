@@ -10,9 +10,11 @@ function HorizontalLine({title}) {
         alignItems: "center",
       }}
     >
-      <div style={{ flex: 1, height: "5px", backgroundColor: "black" }} />
-      <h1 className="display-4 mx-3">{title}</h1>
-      <div style={{ flex: 1, height: "5px", backgroundColor: "black" }} />
+      <div style={{ flex: 1, height: "5px", backgroundColor: "#f1f1f3" }} />
+      <h1 className="display-4 mx-3" style={{ color: "#f1f1f3" }}>
+        {title}
+      </h1>
+      <div style={{ flex: 1, height: "5px", backgroundColor: "#f1f1f3" }} />
     </div>
   );
 }

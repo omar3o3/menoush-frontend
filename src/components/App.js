@@ -44,9 +44,15 @@ function App() {
 
   if (!user) return <LoginComp onLogin={setUser} />;
   // if (!user) return <h1>hi</h1>
+  let customGold = "#d8a941"
+  let customBrown = "#654813";
+  let customWhitish = "#f1f1f3";
+  let customBlack = "#1d1a0c";
+  let customGrey = "#5b503d"
 
   return (
-    <div style={{ backgroundColor: "#f1f1f3" }}>
+    <div style={{ backgroundColor: customGrey }}>
+      {/* "#f1f1f3" */}
       {user && user.admin ? (
         <AdminNavBar
           user={user}

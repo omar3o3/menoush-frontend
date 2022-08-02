@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  /* background-color: #5b503d; */
   background-color: red;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -28,10 +29,15 @@ code {
 
 .homePageCard{
   /* background-color: red; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* box-shadow: 10px 10px 5px lightgray; */
+  /* box-shadow:  4px 8px 0 rgba(210, 33, 33, 0.2) */
+  /* box-shadow: 0 4px 8px 0 rgba(252, 248, 248, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 5px 5px 20px rgb(4, 3, 3);
   /* opacity: 1; */
   /* background-color: transparent; */
+}
+
+.userOrderHistory{
+  box-shadow: 5px 5px 20px rgb(4, 3, 3);
 }
 
 .homePageCard:hover{
