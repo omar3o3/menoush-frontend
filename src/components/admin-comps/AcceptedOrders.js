@@ -10,7 +10,7 @@ function AcceptedOrders() {
       .then((data) => setAcceptedOrdersState(data));
   }, [])
 
-  console.log(acceptedOrdersState);
+  // console.log(acceptedOrdersState);
 
   return (
     <div className="pendingOrderBottomMargin">

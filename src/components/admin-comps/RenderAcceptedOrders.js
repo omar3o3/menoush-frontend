@@ -29,7 +29,7 @@ function RenderAcceptedOrders({ order, cartItems, desserts, UserFullName }) {
     });
   };
 
-  console.log(order)
+  // console.log(order)
 
   return (
     <>
