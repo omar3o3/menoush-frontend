@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardForHomeComp from "./CardForHomeComp";
 import HorizontalLine from "./HorizontalLine";
+import UserCarousal from "./UserCarousal";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -29,6 +30,7 @@ function UserHome({ user }) {
   return (
     // <CardForHomeComp desserts = {desserts}/>
     <>
+    <UserCarousal/>
       <Row className="my-3 mx-3">
         {/* <h1 className="display-4">Cookies</h1> */}
         <HorizontalLine title={"Cookies"} />

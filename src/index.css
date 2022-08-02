@@ -19,6 +19,22 @@ code {
   width: 2.2rem;
 }
 
+.mainCarousal{
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.carousalImages{
+  /* background-attachment: fixed; */
+  /* background-size: cover; */
+  display:inline-block;
+    margin: 0 auto;
+    height: auto; 
+    width: auto; 
+    max-width: 40%; 
+    max-height: 30%;
+}
+
 .mainImage{
   height: 10rem;
   background-attachment: fixed;
