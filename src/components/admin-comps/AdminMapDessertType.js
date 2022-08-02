@@ -3,14 +3,18 @@ import AdminEditDessert from "./AdminEditDessert";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 
 function AdminMapDessertType() {
   const [desserts, setDesserts] = useState([]);
+  const [userLoadingState, setUserLoadingState] = useState(false);
 
   useEffect(() => {
+    setUserLoadingState(true);
     fetch("/desserts")
       .then((resp) => resp.json())
       .then((data) => setDesserts(data));
+    setUserLoadingState(false);
   }, []);
 
   let cookies = desserts.filter((dessert) => dessert.dessert_type === "cookie");
@@ -25,38 +29,44 @@ function AdminMapDessertType() {
 
   return (
     <>
-      <Row className="my-3 mx-5">
-        <h1 className="display-4">Cookies...</h1>
-        {cookies.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <AdminEditDessert dessert={dessert} />
-          </Col>
-        ))}
-        <h1 className="display-4">Qatayefs...</h1>
-        {qatayefs.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <AdminEditDessert dessert={dessert} />
-          </Col>
-        ))}
-        <h1 className="display-4">Platters...</h1>
-        {platters.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <AdminEditDessert dessert={dessert} />
-          </Col>
-        ))}
-        <h1 className="display-4">Kunafas...</h1>
-        {kunafas.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <AdminEditDessert dessert={dessert} />
-          </Col>
-        ))}
-        <h1 className="display-4">Cakes...</h1>
-        {cakes.map((dessert) => (
-          <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <AdminEditDessert dessert={dessert} />
-          </Col>
-        ))}
-      </Row>
+      {desserts.length < 0 ? (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      ) : (
+        <Row className="my-3 mx-5">
+          <h1 className="display-4">Cookies...</h1>
+          {cookies.map((dessert) => (
+            <Col lg={true} key={dessert.id} className="mx-4 my-3">
+              <AdminEditDessert dessert={dessert} />
+            </Col>
+          ))}
+          <h1 className="display-4">Qatayefs...</h1>
+          {qatayefs.map((dessert) => (
+            <Col lg={true} key={dessert.id} className="mx-4 my-3">
+              <AdminEditDessert dessert={dessert} />
+            </Col>
+          ))}
+          <h1 className="display-4">Platters...</h1>
+          {platters.map((dessert) => (
+            <Col lg={true} key={dessert.id} className="mx-4 my-3">
+              <AdminEditDessert dessert={dessert} />
+            </Col>
+          ))}
+          <h1 className="display-4">Kunafas...</h1>
+          {kunafas.map((dessert) => (
+            <Col lg={true} key={dessert.id} className="mx-4 my-3">
+              <AdminEditDessert dessert={dessert} />
+            </Col>
+          ))}
+          <h1 className="display-4">Cakes...</h1>
+          {cakes.map((dessert) => (
+            <Col lg={true} key={dessert.id} className="mx-4 my-3">
+              <AdminEditDessert dessert={dessert} />
+            </Col>
+          ))}
+        </Row>
+      )}
       <br />
       <br />
     </>

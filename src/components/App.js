@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Spinner from "react-bootstrap/Spinner";
+
 import LoginComp from "./LoginComp";
 
 import UserHome from "./user-comps/UserHome";
@@ -20,14 +22,17 @@ import AcceptedOrders from "./admin-comps/AcceptedOrders";
 
 function App() {
   const [user, setUser] = useState(null);
+  // const [userLoadingState, setUserLoadingState] = useState(false);
   // const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
+    // setUserLoadingState(true);
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
+    // setUserLoadingState(false);
   }, []);
 
   // useEffect(() => {
@@ -44,6 +49,11 @@ function App() {
 
   return (
     <>
+      {/* {userLoadingState ? (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      ) : null} */}
       {user && user.admin ? (
         <AdminNavBar user={user} setUser={setUser} />
       ) : (
