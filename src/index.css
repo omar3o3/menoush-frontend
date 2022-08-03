@@ -9,9 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.landingPageHeader{
+  font-family: 'Square Peg', cursive;
+  /* font-size: 9rem; */
+  font-size: 800%;
 }
 
 .profileImage{
@@ -31,8 +39,8 @@ code {
     margin: 0 auto;
     height: auto; 
     width: auto; 
-    max-width: 40%; 
-    max-height: 30%;
+    /* max-height: 5%; */
+    max-width: 35%; 
 }
 
 .mainImage{

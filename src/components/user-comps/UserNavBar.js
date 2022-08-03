@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import profileImage from "../../images/profile-image.jpeg";
+import menoushBlackLogo from "../../images/menoushBlackLogo.png";
 
 function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
   const [isHovering, setIsHovering] = useState(false);
@@ -26,48 +26,45 @@ function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
   }
 
   return (
-    <Navbar sticky="top" className="userNavBar">
-      <Container className="fs-3 justify-content-center">
-        <Nav className="me-auto">
+    <Navbar sticky="top" className="userNavBar ps-5">
+      <Container className="fs-3" fluid>
+        <Nav className="d-flex">
           <Nav.Link
             href="/"
-            style={{ color: navBarTextColor }}
+            style={{ color: navBarTextColor, marginLeft: "10%" }}
             className="navBarLinks"
           >
-            Home
+            Menu
           </Nav.Link>
-          &nbsp;&nbsp;&nbsp;
-          <Nav.Link
-            href="/gallery"
-            style={{ color: navBarTextColor }}
-            className="navBarLinks"
-          >
-            Gallery
-          </Nav.Link>
-          &nbsp;&nbsp;&nbsp;
           <Nav.Link
             href="/cart"
-            style={{ color: navBarTextColor }}
-            className="navBarLinks"
+            style={{
+              color: navBarTextColor,
+              marginRight: "2%",
+              marginLeft: "30%",
+              marginTop: "9%",
+              padding: "0rem",
+            }}
+            className="navBarLinks ml-auto"
           >
-            Cart
+            <ion-icon name="cart-outline" className=""></ion-icon>
           </Nav.Link>
-          &nbsp;&nbsp;&nbsp;
           <Nav.Link
             href="/order-history"
-            style={{ color: navBarTextColor }}
+            style={{
+              color: navBarTextColor,
+              marginRight: "2%",
+              marginTop: "9%",
+              padding: "0rem",
+              marginLeft: "30%",
+            }}
             className="navBarLinks"
           >
-            Order History
+            <ion-icon
+              name="time-outline"
+              className="justify-content-end"
+            ></ion-icon>
           </Nav.Link>
-          &nbsp;&nbsp;&nbsp;
-          {/* <Nav.Link href="/userProfile">
-            <img
-              className="profileImage"
-              src={profileImage}
-              alt="profile icon"
-            />
-          </Nav.Link> */}
         </Nav>
         <Button
           onClick={handleLogoutClick}
@@ -75,6 +72,7 @@ function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
           style={{
             backgroundColor: isHovering ? "#f1f1f3" : navBarTextColor,
             color: isHovering ? "black" : "#f1f1f3",
+            marginRight: "5%",
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

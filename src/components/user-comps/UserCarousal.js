@@ -24,7 +24,7 @@ function UserCarousal() {
   return (
     <Carousel
       className="mainCarousal"
-      style={{ marginTop: "1rem" }}
+      style={{ marginTop: "1rem"}}
       fade
       interval={3000}
     >
