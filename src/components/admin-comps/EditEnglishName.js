@@ -10,6 +10,15 @@ function EditEnglishName({ englishName, dessertId }) {
   const [englishState, setEnglishState] = useState("");
   const [editState, setEditState] = useState(false);
   const [initialEnglishValue, setInitialEnglishValue] = useState(englishName);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   let handleEdit = (e) => {
     setEditState(!editState);
@@ -35,7 +44,7 @@ function EditEnglishName({ englishName, dessertId }) {
       {editState ? (
         // <ListGroup.Item value={dessertId}>
         // <InputGroup className="mb-3">
-        <Row>
+        <Row className="mt-2">
           <Col>
             <textarea
               className="form-control"
@@ -55,7 +64,20 @@ function EditEnglishName({ englishName, dessertId }) {
         </Row>
       )}
       {/* </ListGroup.Item> */}
-      <Button variant="outline-dark" onClick={handleEdit}>
+      <Button
+        variant="outline-dark"
+        onClick={handleEdit}
+        className="addCartButton border-1 border-dark sm"
+        style={{
+          backgroundColor: isHovering ? "#1d1a0c" : "white",
+          // color: isHovering ? "#d8a941" : "black",
+          // color: isHovering ? "#d8a941" : "white",
+          color: isHovering ? "white" : "black",
+          width: "100%",
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {editState ? "Done Editing" : "Edit English Name"}
       </Button>
     </>

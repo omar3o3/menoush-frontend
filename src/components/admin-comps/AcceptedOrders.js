@@ -13,7 +13,7 @@ function AcceptedOrders() {
   // console.log(acceptedOrdersState);
 
   return (
-    <div className="pendingOrderBottomMargin">
+    <div className="mt-5" style={{ paddingBottom: "40%" }}>
       {acceptedOrdersState && acceptedOrdersState.length !== 0 ? (
         acceptedOrdersState.map((order) => (
           <RenderAcceptedOrders

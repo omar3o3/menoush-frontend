@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 
 import EditEnglishName from "./EditEnglishName";
 import EditArabicName from "./EditArabicName";
@@ -12,6 +12,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function AdminEditDessert({ dessert }) {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <div>
       <Card style={{ width: "13rem" }} className="rounded border-2 border-dark">
@@ -32,12 +42,12 @@ function AdminEditDessert({ dessert }) {
         )}
         {/* <ListGroup className="list-group-flush"> */}
         <ListGroup.Item className="text-center">
-        {/* <Row> */}
+          {/* <Row> */}
           {/* <Col> */}
-            <span>ID: </span>
-            <span>{dessert.id}</span>
+          <span>ID: </span>
+          <span>{dessert.id}</span>
           {/* </Col> */}
-        {/* </Row> */}
+          {/* </Row> */}
         </ListGroup.Item>
 
         <EditEnglishName
@@ -52,7 +62,20 @@ function AdminEditDessert({ dessert }) {
 
         <EditPrice price={dessert.price} dessertId={dessert.id} />
         {/* </ListGroup> */}
-        <Button>Delete Dessert</Button>
+        <Button
+          className="addCartButton border-1 border-dark sm"
+          style={{
+            backgroundColor: isHovering ? "#a61111" : "#bc4349",
+            // color: isHovering ? "#d8a941" : "black",
+            // color: isHovering ? "#d8a941" : "white",
+            color: isHovering ? "white" : "black",
+            width: "100%",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Delete Dessert
+        </Button>
       </Card>
     </div>
   );

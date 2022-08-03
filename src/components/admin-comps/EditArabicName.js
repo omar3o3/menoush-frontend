@@ -33,7 +33,7 @@ function EditArabicName({ arabicName, dessertId }) {
   return (
     <>
       {editState ? (
-        <Row>
+        <Row className="mt-2">
           <Col>
             <textarea
               className="form-control"
@@ -43,7 +43,7 @@ function EditArabicName({ arabicName, dessertId }) {
           </Col>
         </Row>
       ) : (
-        <Row>
+        <Row className="my-2 text-center">
           <Col>
             <span>{initialArabicValue}</span>
           </Col>

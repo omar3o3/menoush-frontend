@@ -11,7 +11,7 @@ function PendingOrders() {
   }, []);
 
   return (
-    <div className="pendingOrderBottomMargin">
+    <div className="mt-5" style={{ paddingBottom: "40%" }}>
       {pendingOrders && pendingOrders.length !== 0 ? (
         pendingOrders.map((order) => (
           <RenderPendingOrders

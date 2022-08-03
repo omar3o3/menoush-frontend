@@ -59,10 +59,20 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
     <>
       {showState ? (
         <Container
-          className="border border-2 border-dark rounded individalPendingOrderMargin"
-          style={{ width: "70%" }}
+          className="border border-2 border-dark rounded individalPendingOrderMargin userOrderHistory"
+          style={{
+            width: "70%",
+          }}
         >
-          <Row style={{ backgroundColor: "#FFCDD2" }} className="fs-3 fw-light text-center">
+          <Row
+            style={{
+              borderTopLeftRadius: ".3rem",
+              borderTopRightRadius: ".3rem",
+              backgroundColor: "#a2929a",
+              color: "white",
+            }}
+            className="fs-3 fw-light text-center"
+          >
             <Col className="border-bottom border-2 border-dark">
               <div>Name: {UserFullName}</div>
             </Col>
@@ -71,25 +81,25 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
           </Col> */}
           </Row>
           <Row
-            style={{ backgroundColor: "#FFCDD2" }}
+            style={{ backgroundColor: "#a2929a" ,color: "white",}}
             className="fs-3 fw-light text-center"
           >
-            <Col className="border-end border-2 border-dark">
+            <Col className="border-end border-bottom border-2 border-dark">
               <div>Email: {order.user_email}</div>
             </Col>
-            <Col >
+            <Col className="border-bottom border-2 border-dark">
               <div>Total: ${totalPrice}</div>
             </Col>
           </Row>
 
-          <Row className="fs-3 fw-light">
+          {/* <Row className="fs-3 fw-light">
             <Col className="border-top border-dark border-bottom text-center">
               Items...
             </Col>
-          </Row>
+          </Row> */}
 
-          <Row>
-            <Col className="">
+          <Row className="px-0">
+            <Col className="px-0">
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <p className="lead">
@@ -133,6 +143,7 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
           </Row>
         </Container>
       ) : null}
+      {/* <div className="p-4"></div> */}
     </>
   );
 }
