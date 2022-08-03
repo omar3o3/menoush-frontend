@@ -12,10 +12,12 @@ import Button from "react-bootstrap/Button";
 function AdminEditDessert({ dessert }) {
   return (
     <div>
-      <Card style={{ width: "12rem" }}>
+      <Card style={{ width: "13rem" }}>
         {dessert.preview_image_url ? (
           <Card.Img
-            className="mainImage"
+            // className="mainImage"
+            style={{ width: "13rem", backgroundColor: "white" }}
+            className="border-2 homePageCard text-center mainImage"
             variant="top"
             src={dessert.preview_image_url}
           />

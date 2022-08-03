@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HorizontalLine from "../HorizontalLine";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -30,21 +31,19 @@ function SubmitPreviewImage() {
   };
 
   return (
-    <div>
+    <div className="submitPreviewImageComp">
       <Form className="m-3 mb-6" onSubmit={handleSubmit}>
-        <h1 className="text-center">Submit Main Dessert Photo</h1>
-
+        <HorizontalLine title={"Submit Main Dessert Photo"} />
         {/* <Form.Group className="my-3">
           <Form.Label>English Name</Form.Label>
           <Form.Control type="text" name="english_name2" id="english_name2" />
         </Form.Group> */}
         <Form.Group className="my-3">
-          <Form.Label>Dessert id</Form.Label>
+          <Form.Label style={{ color: "white" }}>Dessert id</Form.Label>
           <Form.Control type="number" name="dessertId2" id="dessertId2" />
         </Form.Group>
-
         <Form.Group className="my-3">
-          <Form.Label>Upload one image</Form.Label>
+          <Form.Label style={{ color: "white" }}>Upload one image</Form.Label>
           <Form.Control
             type="file"
             accept="image/*"
@@ -52,7 +51,6 @@ function SubmitPreviewImage() {
             id="preview_image"
           />
         </Form.Group>
-
         <div className="text-center mt-3">
           <Button variant="primary" type="submit">
             Submit

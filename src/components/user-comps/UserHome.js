@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardForHomeComp from "./CardForHomeComp";
-import HorizontalLine from "./HorizontalLine";
+import HorizontalLine from "../HorizontalLine";
 import UserCarousal from "./UserCarousal";
 
 import Row from "react-bootstrap/Row";

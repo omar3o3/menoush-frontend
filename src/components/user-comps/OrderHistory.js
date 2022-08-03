@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RenderHistory from "./RenderHistory";
-import HorizontalLine from "./HorizontalLine";
+import HorizontalLine from "../HorizontalLine";
 
 function OrderHistory({ userId, cart_owner }) {
   const [orderHistory, setOrderHistory] = useState([]);

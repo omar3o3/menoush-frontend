@@ -67,7 +67,6 @@ function CardForHomeComp({ dessert, user }) {
               className="addCartButton border-1 border-dark sm"
               style={{
                 backgroundColor: isHovering ? "#1d1a0c" : "white",
-                // #654813
                 // color: isHovering ? "#d8a941" : "black",
                 // color: isHovering ? "#d8a941" : "white",
                 color: isHovering ? "white" : "black",

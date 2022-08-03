@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HorizontalLine from "../HorizontalLine";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -50,19 +51,20 @@ function SubmitPhotos() {
   return (
     <div>
       <Form className="m-3 mb-6" onSubmit={handleSubmit}>
-        <h1 className="text-center">Submit Dessert Gallery Photos</h1>
-
+        {/* <h1 className="text-center">Submit Dessert Gallery Photos</h1> */}
+        <HorizontalLine title={"Submit Dessert Gallery Photos"} />
         {/* <Form.Group className="my-3">
           <Form.Label>English Name</Form.Label>
           <Form.Control type="text" name="english_name" id="english_name" />
         </Form.Group> */}
         <Form.Group className="my-3">
-          <Form.Label>Dessert id</Form.Label>
+          <Form.Label style={{ color: "white" }}>Dessert id</Form.Label>
           <Form.Control type="number" name="dessertId" id="dessertId" />
         </Form.Group>
-
         <Form.Group className="my-3">
-          <Form.Label>Upload one or multiple images</Form.Label>
+          <Form.Label style={{ color: "white" }}>
+            Upload one or multiple images
+          </Form.Label>
           <Form.Control
             type="file"
             accept="image/*"
@@ -71,7 +73,6 @@ function SubmitPhotos() {
             id="images"
           />
         </Form.Group>
-
         <div className="text-center mt-3">
           <Button variant="primary" type="submit">
             Submit

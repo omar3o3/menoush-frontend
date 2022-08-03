@@ -48,7 +48,7 @@ function App() {
   let customBrown = "#654813";
   let customWhitish = "#f1f1f3";
   let customBlack = "#1d1a0c";
-  let customGrey = "#5b503d"
+  let customGrey = "#5b503d";
 
   return (
     <div style={{ backgroundColor: customGrey }}>
