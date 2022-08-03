@@ -22,7 +22,12 @@ function UserCarousal() {
     // console.log(one);
 
   return (
-    <Carousel className="mainCarousal" style={{ marginTop: "1rem" }} fade>
+    <Carousel
+      className="mainCarousal"
+      style={{ marginTop: "1rem" }}
+      fade
+      interval={3000}
+    >
       <Carousel.Item className="text-center">
         <img className="carousalImages" src={one} alt="First slide" />
       </Carousel.Item>
