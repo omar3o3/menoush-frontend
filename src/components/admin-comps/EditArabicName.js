@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function EditArabicName({ arabicName, dessertId }) {
   const [arabicState, setArabicState] = useState("");
@@ -10,7 +12,6 @@ function EditArabicName({ arabicName, dessertId }) {
   const [initialArabicValue, setInitialArabicValue] = useState(arabicName);
 
   let handleEdit = (e) => {
-
     setEditState(!editState);
 
     if (e.target.textContent === "Done Editing" && arabicState !== "") {
@@ -32,19 +33,21 @@ function EditArabicName({ arabicName, dessertId }) {
   return (
     <>
       {editState ? (
-        <ListGroup.Item value={dessertId}>
-          <InputGroup className="mb-3">
+        <Row>
+          <Col>
             <textarea
               className="form-control"
               defaultValue={initialArabicValue}
               onChange={(e) => setArabicState(e.target.value)}
             />
-          </InputGroup>
-        </ListGroup.Item>
+          </Col>
+        </Row>
       ) : (
-        <ListGroup.Item className="text-center">
-          <span>{initialArabicValue}</span>
-        </ListGroup.Item>
+        <Row>
+          <Col>
+            <span>{initialArabicValue}</span>
+          </Col>
+        </Row>
       )}
       <Button variant="outline-dark" onClick={handleEdit}>
         {editState ? "Done Editing" : "Edit Arabic Name"}
@@ -52,5 +55,11 @@ function EditArabicName({ arabicName, dessertId }) {
     </>
   );
 }
+
+/*<ListGroup.Item value={dessertId}>*/
+/* <InputGroup className="mb-3"> */
+/* </InputGroup> */
+/* </ListGroup.Item> */
+// <ListGroup.Item className="text-center"></ListGroup.Item>;
 
 export default EditArabicName;

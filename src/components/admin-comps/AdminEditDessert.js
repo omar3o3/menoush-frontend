@@ -8,16 +8,18 @@ import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function AdminEditDessert({ dessert }) {
   return (
     <div>
-      <Card style={{ width: "13rem" }}>
+      <Card style={{ width: "13rem" }} className="rounded border-2 border-dark">
         {dessert.preview_image_url ? (
           <Card.Img
-            // className="mainImage"
-            style={{ width: "13rem", backgroundColor: "white" }}
-            className="border-2 homePageCard text-center mainImage"
+            className="mainImage"
+            style={{ backgroundColor: "white" }}
+            // className="border-2 homePageCard text-center"
             variant="top"
             src={dessert.preview_image_url}
           />
@@ -28,24 +30,28 @@ function AdminEditDessert({ dessert }) {
             src={mainImagePlaceHolder}
           />
         )}
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item className="text-center">
+        {/* <ListGroup className="list-group-flush"> */}
+        <ListGroup.Item className="text-center">
+        {/* <Row> */}
+          {/* <Col> */}
             <span>ID: </span>
             <span>{dessert.id}</span>
-          </ListGroup.Item>
+          {/* </Col> */}
+        {/* </Row> */}
+        </ListGroup.Item>
 
-          <EditEnglishName
-            englishName={dessert.english_name}
-            dessertId={dessert.id}
-          />
+        <EditEnglishName
+          englishName={dessert.english_name}
+          dessertId={dessert.id}
+        />
 
-          <EditArabicName
-            arabicName={dessert.arabic_name}
-            dessertId={dessert.id}
-          />
+        <EditArabicName
+          arabicName={dessert.arabic_name}
+          dessertId={dessert.id}
+        />
 
-          <EditPrice price={dessert.price} dessertId={dessert.id} />
-        </ListGroup>
+        <EditPrice price={dessert.price} dessertId={dessert.id} />
+        {/* </ListGroup> */}
         <Button>Delete Dessert</Button>
       </Card>
     </div>
@@ -53,3 +59,42 @@ function AdminEditDessert({ dessert }) {
 }
 
 export default AdminEditDessert;
+
+    // <div>
+    //   <Card style={{ width: "13rem" }} className="rounded border-2 border-dark">
+    //     {dessert.preview_image_url ? (
+    //       <Card.Img
+    //         className="mainImage"
+    //         style={{ backgroundColor: "white" }}
+    //         // className="border-2 homePageCard text-center"
+    //         variant="top"
+    //         src={dessert.preview_image_url}
+    //       />
+    //     ) : (
+    //       <Card.Img
+    //         className="mainImage"
+    //         variant="top"
+    //         src={mainImagePlaceHolder}
+    //       />
+    //     )}
+    //     <ListGroup className="list-group-flush">
+    //       <ListGroup.Item className="text-center">
+    //         <span>ID: </span>
+    //         <span>{dessert.id}</span>
+    //       </ListGroup.Item>
+
+    //       <EditEnglishName
+    //         englishName={dessert.english_name}
+    //         dessertId={dessert.id}
+    //       />
+
+    //       <EditArabicName
+    //         arabicName={dessert.arabic_name}
+    //         dessertId={dessert.id}
+    //       />
+
+    //       <EditPrice price={dessert.price} dessertId={dessert.id} />
+    //     </ListGroup>
+    //     <Button>Delete Dessert</Button>
+    //   </Card>
+    // </div>;
