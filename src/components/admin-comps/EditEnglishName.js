@@ -58,7 +58,7 @@ function EditEnglishName({ englishName, dessertId }) {
         // </ListGroup.Item>
         // <ListGroup.Item className="text-center">
         <Row className="my-2 text-center">
-          <Col>
+          <Col className="px-3">
             <span>{initialEnglishValue}</span>
           </Col>
         </Row>

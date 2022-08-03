@@ -26,7 +26,7 @@ function AdminMapDessertType() {
 
   return (
     <>
-      <Row className="my-3 mx-5">
+      <Row className="my-3 mx-5" style={{paddingBottom: "40%" }}>
         {/* <h1 className="display-4">Cookies...</h1> */}
         <HorizontalLine title={"Cookies"} />
         {cookies.map((dessert) => (

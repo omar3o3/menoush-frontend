@@ -44,7 +44,7 @@ function EditArabicName({ arabicName, dessertId }) {
         </Row>
       ) : (
         <Row className="my-2 text-center">
-          <Col>
+          <Col className="px-3">
             <span>{initialArabicValue}</span>
           </Col>
         </Row>
