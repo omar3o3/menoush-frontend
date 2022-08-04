@@ -22,21 +22,6 @@ function AdminEditDessert({ dessert, handleDelete }) {
     setIsHovering(false);
   };
 
-  // let handleDelete = (dessertID) => {
-  //   console.log(dessertID);
-  //   fetch("/delete-dessert",{
-  //   method: "DELETE",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       dessert_id: dessertID
-  //     }),
-  //   }).then((resp) => {
-  //     if (resp.ok) {}
-  //   });
-  // }
-
   return (
     <div>
       <Card style={{ width: "13rem" }} className="rounded border-2 border-dark">
@@ -98,42 +83,3 @@ function AdminEditDessert({ dessert, handleDelete }) {
 }
 
 export default AdminEditDessert;
-
-    // <div>
-    //   <Card style={{ width: "13rem" }} className="rounded border-2 border-dark">
-    //     {dessert.preview_image_url ? (
-    //       <Card.Img
-    //         className="mainImage"
-    //         style={{ backgroundColor: "white" }}
-    //         // className="border-2 homePageCard text-center"
-    //         variant="top"
-    //         src={dessert.preview_image_url}
-    //       />
-    //     ) : (
-    //       <Card.Img
-    //         className="mainImage"
-    //         variant="top"
-    //         src={mainImagePlaceHolder}
-    //       />
-    //     )}
-    //     <ListGroup className="list-group-flush">
-    //       <ListGroup.Item className="text-center">
-    //         <span>ID: </span>
-    //         <span>{dessert.id}</span>
-    //       </ListGroup.Item>
-
-    //       <EditEnglishName
-    //         englishName={dessert.english_name}
-    //         dessertId={dessert.id}
-    //       />
-
-    //       <EditArabicName
-    //         arabicName={dessert.arabic_name}
-    //         dessertId={dessert.id}
-    //       />
-
-    //       <EditPrice price={dessert.price} dessertId={dessert.id} />
-    //     </ListGroup>
-    //     <Button>Delete Dessert</Button>
-    //   </Card>
-    // </div>;
