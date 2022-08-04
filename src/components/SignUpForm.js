@@ -41,8 +41,8 @@ function SignUpForm({onLogin}) {
 
 
   return (
-      <>
-      <Form onSubmit={handleSubmit}>
+    <>
+      <Form onSubmit={handleSubmit} style={{ color: "#d8a941" }}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
