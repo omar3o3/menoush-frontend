@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
 import AdminEditDessert from "./AdminEditDessert";
 import HorizontalLine from "../HorizontalLine";
+import Alert from "react-bootstrap/Alert";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function AdminMapDessertType() {
   const [desserts, setDesserts] = useState([]);
+  const [showDeleteState, setShowDeletedState] = useState(false);
 
   useEffect(() => {
     fetch("/desserts")
       .then((resp) => resp.json())
       .then((data) => setDesserts(data));
   }, []);
+
+      const changeDeleteStateTrue = () => {
+        setShowDeletedState(true);
+        setTimeout(changeDeleteStateToFalse, 2000);
+      };
+
+      const changeDeleteStateToFalse = () => {
+        setShowDeletedState(false);
+      };
 
   let cookies = desserts.filter((dessert) => dessert.dessert_type === "cookie");
   let qatayefs = desserts.filter(
@@ -40,12 +51,20 @@ function AdminMapDessertType() {
       }).then((resp) => {
         if (resp.ok) {
           setDesserts(filteredDesserts);
+          changeDeleteStateTrue()
         }
       });
     };
 
   return (
     <>
+      {showDeleteState ? (
+        <span className="text-center">
+          <Alert variant={"danger"} className="fs-3 sticky-top">
+            Item was deleted!
+          </Alert>
+        </span>
+      ) : null}
       <Row className="my-3 mx-5" style={{ paddingBottom: "40%" }}>
         {/* <h1 className="display-4">Cookies...</h1> */}
         <HorizontalLine title={"Cookies"} />
