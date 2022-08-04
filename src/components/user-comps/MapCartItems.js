@@ -17,16 +17,6 @@ function MapCartItems({
     liveItemsAss.find((item) => item.dessert_id === dessert.id)
   );
 
-//   console.log(liveItemsAss);
-  //   let correctItemAss = liveItemsAss.find(
-  //     (item) => item.dessert_id === dessert.id
-  //   );
-  //   console.log(dessert);
-  //   console.log(correctItemAss);
-
-  // let handleEdit = (e, dessert) => {
-  // setEditState(!editState);
-
   let handleEdit = (e, dessert) => {
     setEditState(!editState);
     let updatedItemAss = liveItemsAss.filter(
@@ -51,30 +41,23 @@ function MapCartItems({
         }),
       }).then((resp) => {
         if (resp.ok) {
-          // resp.json().then(data => console.log(data))
           resp.json().then((data) => {
+            console.log(data)
+
             currentItem = data[0];
             currentItem.self_total = data[1];
-            // console.log(currentItem);
             updatedItemAss.push(currentItem);
-            console.log(updatedItemAss);
             setCorrectItemAssState(currentItem);
-            // setLiveItemAss(updatedItemAss);
-            // setLiveTotal(
-            //   updatedItemAss.map((item) =>
-            //     console.log(parseFloat(item.self_total))
-            //   )
-              // .map((item) => parseFloat(item.self_total))
-              // .reduce((partialSum, a) => partialSum + a, 0)
-            // );
+            setLiveItemAss(updatedItemAss);
+            setLiveTotal(
+              updatedItemAss.map((item) => parseFloat(item.self_total))
+              .reduce((partialSum, a) => partialSum + a, 0)
+            );
           });
         }
       });
     }
   };
-
-  // console.log(correctItemAssState);
-  //   console.log(liveItemsAss);
 
   return (
     <>
