@@ -10,6 +10,7 @@ function RenderCartItems({
   cartItemAssocation,
   userId,
   setCart,
+  changeStateTrue,
 }) {
   const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
   const [liveItemsAss, setLiveItemAss] = useState(cartItemAssocation);
@@ -75,6 +76,7 @@ function RenderCartItems({
             setLiveItemAss={setLiveItemAss}
             handleRemove={handleRemove}
             setLiveTotal={setLiveTotal}
+            changeStateTrue={changeStateTrue}
           />
         ))}
         <ListGroup.Item variant="secondary">

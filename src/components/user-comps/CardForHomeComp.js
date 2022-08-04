@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 
 import mainImagePlaceHolder from "../../images/image-coming-soon-placeholder.jpg";
 
-function CardForHomeComp({ dessert, user }) {
+function CardForHomeComp({ dessert, user, changeStateTrue }) {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => {
@@ -31,7 +31,8 @@ function CardForHomeComp({ dessert, user }) {
       }),
     })
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
+      .then(changeStateTrue());
+      // .then((data) => console.log(data));
   };
 
   return (

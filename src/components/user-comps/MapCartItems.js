@@ -10,6 +10,7 @@ function MapCartItems({
   handleRemove,
   setLiveItemAss,
   setLiveTotal,
+  changeStateTrue,
 }) {
   const [quantityState, setQuantityState] = useState(0);
   const [editState, setEditState] = useState(false);
@@ -40,20 +41,23 @@ function MapCartItems({
         }),
       }).then((resp) => {
         if (resp.ok) {
-          resp.json().then((data) => {
-            // console.log(data)
+          resp
+            .json()
+            .then((data) => {
+              // console.log(data)
 
-            currentItem = data[0];
-            currentItem.self_total = data[1];
-            updatedItemAss.push(currentItem);
-            setCorrectItemAssState(currentItem);
-            setLiveItemAss(updatedItemAss);
-            setLiveTotal(
-              updatedItemAss
-                .map((item) => parseFloat(item.self_total))
-                .reduce((partialSum, a) => partialSum + a, 0)
-            );
-          });
+              currentItem = data[0];
+              currentItem.self_total = data[1];
+              updatedItemAss.push(currentItem);
+              setCorrectItemAssState(currentItem);
+              setLiveItemAss(updatedItemAss);
+              setLiveTotal(
+                updatedItemAss
+                  .map((item) => parseFloat(item.self_total))
+                  .reduce((partialSum, a) => partialSum + a, 0)
+              );
+            })
+            .then(changeStateTrue());
         }
       });
     }

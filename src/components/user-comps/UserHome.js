@@ -3,12 +3,14 @@ import CardForHomeComp from "./CardForHomeComp";
 import HorizontalLine from "../HorizontalLine";
 import UserCarousal from "./UserCarousal";
 import menoushBlackLogo from "../../images/menoushBlackLogo.png";
+import Alert from "react-bootstrap/Alert";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function UserHome({ user }) {
   const [desserts, setDesserts] = useState([]);
+  const [showAddedState, setShowAddedState] = useState(false);
 
   useEffect(() => {
     fetch("/desserts")
@@ -28,8 +30,24 @@ function UserHome({ user }) {
 
   // console.log("hi from userHome");
 
+    const changeStateTrue = () => {
+      setShowAddedState(true);
+      setTimeout(changeStateToFalse, 2000);
+    };
+
+    const changeStateToFalse = () => {
+      setShowAddedState(false);
+    };
+
   return (
     <>
+      {showAddedState ? (
+        <span className="text-center">
+          <Alert variant={"success"} className="fs-3 sticky-top">
+            Item was added to your cart!
+          </Alert>
+        </span>
+      ) : null}
       <div className="text-center mb-3 mt-1">
         <img
           src={menoushBlackLogo}
@@ -51,31 +69,51 @@ function UserHome({ user }) {
         <HorizontalLine title={"Cookies"} />
         {cookies.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <CardForHomeComp dessert={dessert} user={user} />
+            <CardForHomeComp
+              dessert={dessert}
+              user={user}
+              changeStateTrue={changeStateTrue}
+            />
           </Col>
         ))}
         <HorizontalLine title={"Qatayefs"} />
         {qatayefs.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <CardForHomeComp dessert={dessert} user={user} />
+            <CardForHomeComp
+              dessert={dessert}
+              user={user}
+              changeStateTrue={changeStateTrue}
+            />
           </Col>
         ))}
         <HorizontalLine title={"Platters"} />
         {platters.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <CardForHomeComp dessert={dessert} user={user} />
+            <CardForHomeComp
+              dessert={dessert}
+              user={user}
+              changeStateTrue={changeStateTrue}
+            />
           </Col>
         ))}
         <HorizontalLine title={"Kunafas"} />
         {kunafas.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <CardForHomeComp dessert={dessert} user={user} />
+            <CardForHomeComp
+              dessert={dessert}
+              user={user}
+              changeStateTrue={changeStateTrue}
+            />
           </Col>
         ))}
         <HorizontalLine title={"Cakes"} />
         {cakes.map((dessert) => (
           <Col lg={true} key={dessert.id} className="mx-4 my-3">
-            <CardForHomeComp dessert={dessert} user={user} />
+            <CardForHomeComp
+              dessert={dessert}
+              user={user}
+              changeStateTrue={changeStateTrue}
+            />
           </Col>
         ))}
       </Row>
