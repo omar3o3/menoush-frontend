@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function AdminEditDessert({ dessert }) {
+function AdminEditDessert({ dessert, handleDelete }) {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => {
@@ -21,6 +21,21 @@ function AdminEditDessert({ dessert }) {
   const handleMouseLeave = () => {
     setIsHovering(false);
   };
+
+  // let handleDelete = (dessertID) => {
+  //   console.log(dessertID);
+  //   fetch("/delete-dessert",{
+  //   method: "DELETE",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       dessert_id: dessertID
+  //     }),
+  //   }).then((resp) => {
+  //     if (resp.ok) {}
+  //   });
+  // }
 
   return (
     <div>
@@ -73,6 +88,7 @@ function AdminEditDessert({ dessert }) {
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={() => handleDelete(dessert.id)}
         >
           Delete Dessert
         </Button>
