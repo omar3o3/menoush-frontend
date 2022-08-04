@@ -11,11 +11,11 @@ function RenderCartItems({
   userId,
   setCart,
   changeStateTrue,
+  changeCheckOutStateToTrue,
+  changeDeleteStateToTrue,
 }) {
   const [reflectiveDesserts, setReflectiveDesserts] = useState(dessertsInCart);
   const [liveItemsAss, setLiveItemAss] = useState(cartItemAssocation);
-  // const [quantityState, setQuantityState] = useState(0);
-  // const [editState, setEditState] = useState(false);
   const [liveTotal, setLiveTotal] = useState(
     liveItemsAss
       .map((item) => parseFloat(item.self_total))
@@ -44,6 +44,7 @@ function RenderCartItems({
       if (resp.ok) {
         setReflectiveDesserts(cartAfterDelete);
         setLiveTotal(newItemTotal);
+        changeDeleteStateToTrue();
       }
     });
   };
@@ -60,7 +61,11 @@ function RenderCartItems({
       }),
     })
       .then((resp) => resp.json())
-      .then((data) => setCart(data));
+      .then((data) => {
+        setCart(data);
+        changeCheckOutStateToTrue();
+      });
+
     // .then((data) => console.log(data));
     //set an alert alert state to true to let user know order was place
   };
