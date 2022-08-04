@@ -22,7 +22,6 @@ function MapCartItems({
     let updatedItemAss = liveItemsAss.filter(
       (item) => item.id !== correctItemAssState.id
     );
-    // console.log(updatedItemAss);
     let currentItem = correctItemAssState;
 
     if (
@@ -42,7 +41,7 @@ function MapCartItems({
       }).then((resp) => {
         if (resp.ok) {
           resp.json().then((data) => {
-            console.log(data)
+            // console.log(data)
 
             currentItem = data[0];
             currentItem.self_total = data[1];
@@ -50,8 +49,9 @@ function MapCartItems({
             setCorrectItemAssState(currentItem);
             setLiveItemAss(updatedItemAss);
             setLiveTotal(
-              updatedItemAss.map((item) => parseFloat(item.self_total))
-              .reduce((partialSum, a) => partialSum + a, 0)
+              updatedItemAss
+                .map((item) => parseFloat(item.self_total))
+                .reduce((partialSum, a) => partialSum + a, 0)
             );
           });
         }
