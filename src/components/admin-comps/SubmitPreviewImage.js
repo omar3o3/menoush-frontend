@@ -4,12 +4,11 @@ import HorizontalLine from "../HorizontalLine";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function SubmitPreviewImage() {
-  
+function SubmitPreviewImage({ changeSubmissionStateTrue }) {
   let handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-  
+
     const dessertId2 = document.getElementById("dessertId2").value;
     formData.append("[id]", dessertId2);
 
@@ -25,9 +24,9 @@ function SubmitPreviewImage() {
     fetch("/add-preview-image", {
       method: "POST",
       body: data,
-    })
-      .then((resp) => resp.json())
-      .then((data) => console.log(data));
+    }).then(changeSubmissionStateTrue());
+    // .then((resp) => resp.json())
+    // .then((data) => console.log(data));
   };
 
   return (

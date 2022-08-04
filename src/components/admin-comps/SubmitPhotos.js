@@ -4,7 +4,7 @@ import HorizontalLine from "../HorizontalLine";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function SubmitPhotos() {
+function SubmitPhotos({ changeSubmissionStateTrue }) {
   // const [desserts, setDesserts] = useState([]);
 
   // useEffect(() => {
@@ -20,8 +20,8 @@ function SubmitPhotos() {
     e.preventDefault();
     const formData = new FormData();
 
-     const dessertId = document.getElementById("dessertId").value;
-     formData.append("[id]", dessertId);
+    const dessertId = document.getElementById("dessertId").value;
+    formData.append("[id]", dessertId);
 
     let imagesLength = e.target.images.files.length;
     let eachImage = e.target.images.files;
@@ -44,8 +44,9 @@ function SubmitPhotos() {
       method: "POST",
       body: data,
     })
-      .then((resp) => resp.json())
-      // .then((data) => console.log(data));
+    .then(changeSubmissionStateTrue())
+    // .then((resp) => resp.json());
+    // .then((data) => console.log(data));
   };
 
   return (

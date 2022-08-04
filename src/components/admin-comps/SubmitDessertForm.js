@@ -4,12 +4,11 @@ import HorizontalLine from "../HorizontalLine";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function SubmitDessertForm() {
-
-  const [englishName , setEnglishName] = useState("")
-  const [arabicName , setArabicName] = useState("")
-  const [price , setPrice] = useState(0)
-  const [dessertType , setDessertType] = useState("cookie")
+function SubmitDessertForm({ changeSubmissionStateTrue }) {
+  const [englishName, setEnglishName] = useState("");
+  const [arabicName, setArabicName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [dessertType, setDessertType] = useState("cookie");
   // const [images , setImages] = useState([])
 
   // console.log(setEnglishName);
@@ -18,8 +17,8 @@ function SubmitDessertForm() {
   // console.log(setDessertType);
   // console.log(setImages);
 
-  let handleSubmit = (e) =>{
-    e.preventDefault()
+  let handleSubmit = (e) => {
+    e.preventDefault();
     fetch("/create-dessert", {
       method: "POST",
       headers: {
@@ -37,9 +36,10 @@ function SubmitDessertForm() {
         (data) => console.log(data),
         setEnglishName(""),
         setArabicName(""),
-        setPrice(0)
+        setPrice(0),
+        changeSubmissionStateTrue()
       );
-  }
+  };
 
   return (
     <Form className="m-3 mb-6 mt-4" onSubmit={handleSubmit}>
