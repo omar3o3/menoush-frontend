@@ -19,7 +19,7 @@ function UserCart({ userId, cart_owner }) {
     <div style={{paddingBottom: "40%"}}>
       {cart && cart.cart_items.length !== 0 ? (
         <RenderCartItems
-          dessertsInCart={cart.show_cart_items}
+          dessertsInCart={cart.desserts}
           cartItemAssocation={cart.cart_items}
           userId={userId}
           setCart={setCart}

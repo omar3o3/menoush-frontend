@@ -42,7 +42,9 @@ function UserHome({ user }) {
             position: "relative",
           }}
         />
-        <h1 className="landingPageHeader">Welcome to Menoush Bakery</h1>
+        <h1 className="landingPageHeader" style={{ color: "#d8a941" }}>
+          Welcome to Menoush Bakery
+        </h1>
       </div>
       <UserCarousal />
       <Row className="my-3 mx-3">

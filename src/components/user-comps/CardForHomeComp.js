@@ -60,8 +60,8 @@ function CardForHomeComp({ dessert, user }) {
           <Col className="px-3 my-1">{dessert.arabic_name}</Col>
         </Row>
         <Row>
-          <Col className="pe-0">Price: ${dessert.price}</Col>
-          <Col className="ps-0">
+          <Col className="pe-0">${dessert.price}</Col>
+          {/* <Col className="ps-0">
             <Button
               onClick={handleClick}
               className="addCartButton border-1 border-dark sm"
@@ -78,7 +78,26 @@ function CardForHomeComp({ dessert, user }) {
             >
               Add to Cart
             </Button>
-          </Col>
+          </Col> */}
+          <Row className="m-0">
+            <Col className="m-0 p-0">
+              <Button
+                onClick={handleClick}
+                className="border-1 border-dark mt-2"
+                style={{
+                  backgroundColor: isHovering ? "#1d1a0c" : "white",
+                  // color: isHovering ? "#d8a941" : "black",
+                  // color: isHovering ? "#d8a941" : "white",
+                  color: isHovering ? "white" : "black",
+                  width: "100%",
+                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                Add to Cart
+              </Button>
+            </Col>
+          </Row>
         </Row>
         {/* <ListGroup className="list-group-flush" style={{}}>
           <ListGroup.Item>{dessert.english_name}</ListGroup.Item>
