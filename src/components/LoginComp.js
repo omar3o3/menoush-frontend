@@ -14,30 +14,16 @@ function LoginComp({onLogin}) {
   return (
     <div
       style={{
-        marginBottom: "30%",
         backgroundColor: "#5b503d",
-        paddingBottom: "30%",
+        paddingBottom: "10%",
       }}
     >
-      {/* <h1
-        className="fs-1 fst-italic fw-semibold"
-        style={{ textAlign: "center", marginTop: "5%" }}
-      >
-        Menoush Bakery
-      </h1> */}
-      {/* <h1
-        className="landingPageHeader"
-        style={{ color: "#d8a941", textAlign: "center", marginTop: "5%" , }}
-      >
-        Welcome to Menoush Bakery
-      </h1> */}
-      <div className="text-center mb-3 mt-1">
+      <div className="text-center" style={{}}>
         <img
           src={menoushBlackLogo}
-          alt=""
+          alt="menoush logo"
           className=""
           style={{
-            // width: "20%",
             maxHeight: "15rem",
             border: "white",
             marginTop: ".5%",
@@ -48,7 +34,13 @@ function LoginComp({onLogin}) {
           Welcome to Menoush Bakery
         </h1>
       </div>
-      <div style={{ marginLeft: "30%", marginRight: "30%", marginTop: "5%" }}>
+      <div
+        style={{
+          marginLeft: "30%",
+          marginRight: "30%",
+          marginTop: "5%",
+        }}
+      >
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
