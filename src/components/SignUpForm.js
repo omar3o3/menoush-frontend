@@ -1,9 +1,9 @@
-import React , {useState} from 'react'
+import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function SignUpForm({onLogin}) {
+function SignUpForm({ onLogin }) {
   const [actualName, setActualName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,41 +11,46 @@ function SignUpForm({onLogin}) {
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
-   function handleSubmit(e) {
-     e.preventDefault();
-     setErrors([]);
-     setIsLoading(true);
-     fetch("/signup", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({
-         actual_name: actualName,
-         username: username,
-         password: password,
-         password_confirmation: passwordConfirmation,
-         image_url: imageUrl,
-       }),
-     }).then((r) => {
-       // console.log('im working form handleSubmit')
-       setIsLoading(false);
-       if (r.ok) {
-         r.json().then((user) => onLogin(user));
-       } else {
-         r.json().then((err) => setErrors(err.errors));
-       }
-     });
-   }
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
 
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        actual_name: actualName,
+        username: username,
+        password: password,
+        password_confirmation: passwordConfirmation,
+        image_url: imageUrl,
+      }),
+    }).then((r) => {
+      // console.log('im working form handleSubmit')
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
 
   return (
     <>
-      <Form
-        onSubmit={handleSubmit}
-        style={{ color: "#d8a941"}}
-      >
+      <Form onSubmit={handleSubmit} style={{ color: "#d8a941" }}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -91,7 +96,17 @@ function SignUpForm({onLogin}) {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button
+          type="submit"
+          className="border-1 border-dark"
+          style={{
+            backgroundColor: isHovering ? "#1d1a0c" : "white",
+            color: isHovering ? "white" : "black",
+            display: "inline",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           Submit
         </Button>
       </Form>
@@ -99,4 +114,4 @@ function SignUpForm({onLogin}) {
   );
 }
 
-export default SignUpForm
+export default SignUpForm;

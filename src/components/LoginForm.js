@@ -1,33 +1,41 @@
-import React , {useState} from 'react'
+import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function LoginForm({onLogin}) {
+function LoginForm({ onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isHovering, setIsHovering] = useState(false);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
 
-      function handleSubmit(e) {
-        e.preventDefault();
-        //setIsLoading(true);
-        fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
-        })
-          // .then(resp => resp.json()).then(data => console.log(data))
-          .then((r) => {
-            //setIsLoading(false);
-            if (r.ok) {
-              r.json().then((user) => onLogin(user));
-            } else {
-              r.json().then((err) => console.log(err.errors)); //setErrors(err.errors)
-            }
-          });
-      }
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    //setIsLoading(true);
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      // .then(resp => resp.json()).then(data => console.log(data))
+      .then((r) => {
+        //setIsLoading(false);
+        if (r.ok) {
+          r.json().then((user) => onLogin(user));
+        } else {
+          r.json().then((err) => console.log(err.errors)); //setErrors(err.errors)
+        }
+      });
+  }
 
   return (
     <div>
@@ -56,7 +64,17 @@ function LoginForm({onLogin}) {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button
+          type="submit"
+          className="border-1 border-dark"
+          style={{
+            backgroundColor: isHovering ? "#1d1a0c" : "white",
+            color: isHovering ? "white" : "black",
+            display: "inline",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           Login
         </Button>
       </Form>
@@ -64,4 +82,4 @@ function LoginForm({onLogin}) {
   );
 }
 
-export default LoginForm
+export default LoginForm;
