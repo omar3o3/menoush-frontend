@@ -10,6 +10,8 @@ function PendingOrders() {
       .then((data) => setPendingOrders(data));
   }, []);
 
+  console.log(pendingOrders);
+
   return (
     <div className="mt-5" style={{ paddingBottom: "40%" }}>
       {pendingOrders && pendingOrders.length !== 0 ? (

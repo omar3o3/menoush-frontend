@@ -10,7 +10,7 @@ function AcceptedOrders() {
       .then((data) => setAcceptedOrdersState(data));
   }, [])
 
-  // console.log(acceptedOrdersState);
+  console.log(acceptedOrdersState);
 
   return (
     <div className="mt-5" style={{ paddingBottom: "40%" }}>
