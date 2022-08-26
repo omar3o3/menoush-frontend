@@ -10,7 +10,8 @@ function PendingOrders() {
       .then((data) => setPendingOrders(data));
   }, []);
 
-  console.log(pendingOrders);
+  // console.log(pendingOrders);
+  // console.log('hi')
 
   return (
     <div className="mt-5" style={{ paddingBottom: "40%" }}>
@@ -22,6 +23,8 @@ function PendingOrders() {
             cartItems={order.cart_items}
             desserts={order.desserts}
             UserFullName={order.show_pending_cart_name}
+            // checkOutDate = {order.day_checked_out}
+            checkOutDate = {order.converted_checkout_date}
           />
         ))
       ) : (

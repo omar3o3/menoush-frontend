@@ -9,10 +9,16 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import ListGroup from "react-bootstrap/ListGroup";
 
-function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
-
+function RenderPendingOrders({
+  order,
+  cartItems,
+  desserts,
+  UserFullName,
+  checkOutDate,
+}) {
   const [dayState, setDayState] = useState();
   const [showState, setShowState] = useState(true);
+  // console.log(checkOutDate);
 
   let totalPrice = cartItems
     .map((item) => parseFloat(item.self_total))
@@ -20,21 +26,20 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
 
   let handleAccept = () => {
     if (dayState !== 0 && !isNaN(dayState) && dayState > 0) {
-        fetch("/accept-order", {
-          method: "PATCH",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            order_id: order.id,
-            days_to_complete: dayState,
-          }),
-        })
-        .then((response) => {
-          if (response.ok) {
-            setShowState(false);
-          }
-        });
+      fetch("/accept-order", {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          order_id: order.id,
+          days_to_complete: dayState,
+        }),
+      }).then((response) => {
+        if (response.ok) {
+          setShowState(false);
+        }
+      });
     }
   };
 
@@ -74,14 +79,27 @@ function RenderPendingOrders({ order, cartItems, desserts, UserFullName }) {
             className="fs-3 fw-light text-center"
           >
             <Col className="border-bottom border-2 border-dark">
-              <div>Name: {UserFullName}</div>
+              <div style={{verticalAlign: "middle"}}>Name: {UserFullName}</div>
             </Col>
-            {/* <Col className="border-end border-dark">
-            <div>Date Ordered: {}</div>
-          </Col> */}
+            {/* <Col className="border-bottom border-2 border-dark">
+              <div>Checked Out: {checkOutDate}</div>
+            </Col> */}
           </Row>
           <Row
-            style={{ backgroundColor: "#a2929a" ,color: "white",}}
+            style={{
+              borderTopLeftRadius: ".3rem",
+              borderTopRightRadius: ".3rem",
+              backgroundColor: "#a2929a",
+              color: "white",
+            }}
+            className="fs-3 fw-light text-center"
+          >
+            <Col className="border-bottom border-2 border-dark">
+              <div>Checked Out: {checkOutDate}</div>
+            </Col>
+          </Row>
+          <Row
+            style={{ backgroundColor: "#a2929a", color: "white" }}
             className="fs-3 fw-light text-center"
           >
             <Col className="border-end border-bottom border-2 border-dark">
