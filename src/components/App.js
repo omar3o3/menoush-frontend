@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route , Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginComp from "./LoginComp";
@@ -24,6 +24,7 @@ let homeCardButtonColor = "#654813"
 function App() {
   const [user, setUser] = useState(null);
   // const [desserts, setDesserts] = useState([]);
+  let history = useHistory()
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -54,18 +55,26 @@ function App() {
     <div style={{ backgroundColor: customGrey }}>
       {/* "#f1f1f3" */}
       {user && user.admin ? (
-        <AdminNavBar
-          user={user}
-          setUser={setUser}
-          navBarTextColor={navBarTextColor}
-        />
+        <>
+            {/* {history.push("/create")} */}
+          <AdminNavBar
+            user={user}
+            setUser={setUser}
+            navBarTextColor={navBarTextColor}
+            />
+        </>
       ) : (
-        <UserNavBar
-          user={user}
-          setUser={setUser}
-          navBarTextColor={navBarTextColor}
-          homeCardButtonColor={homeCardButtonColor}
-        />
+        <>
+          {/* <BrowserRouter>
+            <Redirect exact to="/" /> */}
+            <UserNavBar
+              user={user}
+              setUser={setUser}
+              navBarTextColor={navBarTextColor}
+              homeCardButtonColor={homeCardButtonColor}
+            />
+          {/* </BrowserRouter> */}
+        </>
       )}
       <BrowserRouter>
         <Switch>
@@ -87,9 +96,15 @@ function App() {
           <Route exact path="/user-account">
             <UserAccount />
           </Route>
+          {user.admin ? (
           <Route exact path="/create">
             <CreateSection />
           </Route>
+          )
+          : (
+            <Redirect to="/" />
+          )
+          }
           <Route exact path="/edit-desserts">
             <AdminMapDessertType />
           </Route>
