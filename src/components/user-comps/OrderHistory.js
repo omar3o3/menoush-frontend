@@ -11,20 +11,26 @@ function OrderHistory({ userId, cart_owner }) {
       .then((data) => setOrderHistory(data));
   }, []);
 
+    let pendingOrders = orderHistory
+      .filter((order) => order.current_cart === false)
+      .filter((order) => order.pending_status === true);
+
   let acceptedOrders = orderHistory.filter(
     (order) => order.acceptance_status === true
   );
 
   let deniedOrders = orderHistory
     .filter((order) => order.acceptance_status === false)
-    .filter((order) => order.current_cart === false);
+    .filter(order => order.pending_status === false)
+    .filter((order) => order.current_cart === false)
+    .filter(order => order.day_accepted === null);
 
   let finishedOrders = orderHistory
     .filter((order) => order.acceptance_status === true)
     .filter((order) => order.completed_status === true);
 
   //   console.log(acceptedOrders);
-  //   console.log(deniedOrders);
+    console.log(deniedOrders);
   //   console.log(finishedOrders);
 
   return (
@@ -33,6 +39,15 @@ function OrderHistory({ userId, cart_owner }) {
         <>
           {/* <div> */}
           {/* <h1 className="display-5 userOrderHistory mx-4">Finsihed Orders...</h1> */}
+          <HorizontalLine title={"Pending Orders"} />
+          {pendingOrders.map((order) => (
+            <RenderHistory
+              key={order.id}
+              cartItems={order.cart_items}
+              desserts={order.desserts}
+              order={order}
+            />
+          ))}
           <HorizontalLine title={"Finished Orders"} />
           {finishedOrders.map((order) => (
             <RenderHistory
