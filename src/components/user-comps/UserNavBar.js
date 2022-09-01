@@ -30,7 +30,7 @@ function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
       <Container className="fs-3" fluid>
         <Nav className="d-flex">
           <Nav.Link
-            href="/"
+            href="/home"
             style={{ color: navBarTextColor, marginLeft: "10%" }}
             className="navBarLinks"
           >

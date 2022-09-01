@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route , Redirect, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginComp from "./LoginComp";
@@ -19,12 +19,11 @@ import PendingOrders from "./admin-comps/PendingOrders";
 import AcceptedOrders from "./admin-comps/AcceptedOrders";
 
 let navBarTextColor = "#d8a941";
-let homeCardButtonColor = "#654813"
+let homeCardButtonColor = "#654813";
 
 function App() {
   const [user, setUser] = useState(null);
   // const [desserts, setDesserts] = useState([]);
-  let history = useHistory()
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -34,18 +33,12 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/desserts")
-  //     .then((resp) => resp.json())
-  //     .then((data) => setDesserts(data));
-  // }, []);
-
   // console.log(user)
   // console.log(user.id)
 
   if (!user) return <LoginComp onLogin={setUser} />;
   // if (!user) return <h1>hi</h1>
-  let customGold = "#d8a941"
+  let customGold = "#d8a941";
   let customBrown = "#654813";
   let customWhitish = "#f1f1f3";
   let customBlack = "#1d1a0c";
@@ -53,32 +46,43 @@ function App() {
 
   return (
     <div style={{ backgroundColor: customGrey }}>
-      {/* "#f1f1f3" */}
       {user && user.admin ? (
         <>
-            {/* {history.push("/create")} */}
           <AdminNavBar
             user={user}
             setUser={setUser}
             navBarTextColor={navBarTextColor}
-            />
+          />
         </>
       ) : (
         <>
-          {/* <BrowserRouter>
-            <Redirect exact to="/" /> */}
-            <UserNavBar
-              user={user}
-              setUser={setUser}
-              navBarTextColor={navBarTextColor}
-              homeCardButtonColor={homeCardButtonColor}
-            />
-          {/* </BrowserRouter> */}
+          <UserNavBar
+            user={user}
+            setUser={setUser}
+            navBarTextColor={navBarTextColor}
+            homeCardButtonColor={homeCardButtonColor}
+          />
         </>
       )}
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+          {user.admin ? (
+            <Redirect
+              from={["/home", "/gallery", "/cart", "/order-history"]}
+              to="/create"
+            />
+          ) : (
+            <Redirect
+              from={[
+                "/create",
+                "/edit-desserts",
+                "/pending-orders",
+                "/accepted-orders",
+              ]}
+              to="/home"
+            />
+          )}
+          <Route exact path="/home">
             <UserHome user={user} />
           </Route>
           <Route exact path="/login">
@@ -96,15 +100,9 @@ function App() {
           <Route exact path="/user-account">
             <UserAccount />
           </Route>
-          {user.admin ? (
           <Route exact path="/create">
             <CreateSection />
           </Route>
-          )
-          : (
-            <Redirect to="/" />
-          )
-          }
           <Route exact path="/edit-desserts">
             <AdminMapDessertType />
           </Route>
