@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginComp from "./LoginComp";
@@ -23,7 +23,7 @@ let homeCardButtonColor = "#654813";
 
 function App() {
   const [user, setUser] = useState(null);
-  let history = useHistory();
+  // let history = useHistory();
   // const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
