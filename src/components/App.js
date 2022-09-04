@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginComp from "./LoginComp";
@@ -23,6 +23,7 @@ let homeCardButtonColor = "#654813";
 
 function App() {
   const [user, setUser] = useState(null);
+  let history = useHistory();
   // const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
       )}
       <BrowserRouter>
         <Switch>
+          <Redirect exact from="/" to="/home" />
           {user.admin ? (
             <Redirect
               from={["/home", "/gallery", "/cart", "/order-history"]}
