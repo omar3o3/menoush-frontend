@@ -30,8 +30,8 @@ function CreateSection() {
       <SubmitDessertForm
         changeSubmissionStateTrue={changeSubmissionStateTrue}
       />
-      <br />
-      <SubmitPhotos changeSubmissionStateTrue={changeSubmissionStateTrue} />
+      {/* <br /> */}
+      {/* <SubmitPhotos changeSubmissionStateTrue={changeSubmissionStateTrue} /> */}
       <br />
       <SubmitPreviewImage
         changeSubmissionStateTrue={changeSubmissionStateTrue}
