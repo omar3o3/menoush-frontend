@@ -29,7 +29,7 @@ function AdminNavBar({user , setUser}) {
       bg="dark"
       // variant="dark"
       sticky="top"
-      style={{ boxShadow: "1px 2px 20px #d8a941" }}
+      style={{ boxShadow: "0px .5px 20px #d8a941" }}
     >
       <Container className="fs-3 mx-5" fluid>
         <Nav className="me-auto">
