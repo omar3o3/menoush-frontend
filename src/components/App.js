@@ -27,8 +27,8 @@ function App() {
   // const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
-    // fetch("/me").then((r) => {
-    fetch("https://menoushbackend.netlify.app/me").then((r) => {
+    fetch("/me").then((r) => {
+    // fetch("https://menoushbackend.netlify.app/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
