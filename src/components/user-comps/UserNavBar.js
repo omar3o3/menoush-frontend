@@ -26,9 +26,14 @@ function UserNavBar({ user, setUser, navBarTextColor , homeCardButtonColor}) {
   }
 
   return (
-    <Navbar sticky="top" className="userNavBar ps-5">
-      <Container className="fs-3" fluid>
-        <Nav className="d-flex">
+    <Navbar
+      bg="dark"
+      sticky="top"
+      className="ps-5"
+      style={{ boxShadow: "0px .5px 20px #d8a941" }}
+    >
+      <Container className="fs-3 mx-5" fluid>
+        <Nav className="me-auto">
           <Nav.Link
             href="/home"
             style={{ color: navBarTextColor, marginLeft: "10%" }}

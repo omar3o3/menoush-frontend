@@ -25,8 +25,13 @@ function AdminNavBar({user , setUser}) {
     }
 
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
-      <Container className="fs-3">
+    <Navbar
+      bg="dark"
+      // variant="dark"
+      sticky="top"
+      style={{ boxShadow: "1px 2px 20px #d8a941" }}
+    >
+      <Container className="fs-3 mx-5" fluid>
         <Nav className="me-auto">
           <Nav.Link href="/create" style={{ color: "#d8a941" }}>
             Create&nbsp;&nbsp;&nbsp;
