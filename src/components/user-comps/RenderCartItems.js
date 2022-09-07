@@ -22,15 +22,31 @@ function RenderCartItems({
       .reduce((partialSum, a) => partialSum + a, 0)
   );
 
+  // console.log(reflectiveDesserts);
+  // console.log(liveItemsAss);
+  console.log();
+
   let handleRemove = (dessert) => {
     let selectedCartItem = liveItemsAss.find(
       (item) => item.dessert_id === dessert.id
     ).id;
     let desId = dessert.id;
     let cartAfterDelete = reflectiveDesserts.filter((des) => des.id !== desId);
-    let newItemTotal =
-      liveTotal -
-      liveItemsAss.find((item) => item.dessert_id === dessert.id).self_total;
+    // console.log(cartAfterDelete);
+    // let newItemTotal =
+    //   liveTotal -
+    //   liveItemsAss.find((item) => item.dessert_id === dessert.id).self_total;
+    
+    // console.log(selectedCartItem.dessert_id);
+    let newLiveItemAss = liveItemsAss.filter(
+      (item) => item.dessert_id !== desId
+    );
+    console.log(newLiveItemAss);
+
+    let newItemTotal = newLiveItemAss
+      .map((item) => parseFloat(item.self_total))
+      .reduce((partialSum, a) => partialSum + a, 0);
+    console.log(newItemTotal);
 
     fetch("/remove-from-cart", {
       method: "DELETE",
